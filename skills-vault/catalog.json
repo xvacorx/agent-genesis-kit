@@ -6375,5 +6375,23 @@
     "description": "Code comment hygiene for antislop: purge generic AI-slop comments and decorative banners while preserving architectural intent and critical rationale.",
     "category": "development",
     "source": "anti-slop (MIT)"
+  },
+  "self-improving-agent": {
+    "name": "self-improving-agent",
+    "folder": "self-improving-agent",
+    "description": "Continuous learning engine that captures corrections, user preferences, and runtime lessons into living memory.",
+    "category": "core"
+  },
+  "agent-genesis": {
+    "name": "agent-genesis",
+    "folder": "agent-genesis",
+    "description": "Master onboarding wizard for bootstrapping tailored AI agents with identity, rules, memory, and skills.",
+    "category": "core"
+  },
+  "senior-frontend": {
+    "name": "senior-frontend",
+    "folder": "senior-frontend",
+    "description": "Advanced architectural guidance and modern best practices for React, Next.js, Astro, TypeScript, state management, and web performance optimization.",
+    "category": "frontend"
   }
 }

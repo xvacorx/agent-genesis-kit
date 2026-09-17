@@ -9,6 +9,7 @@ scratch/
 temp/
 tmp/
 *.tmp
+active_profile.json
 
 # Environment variables
 .env

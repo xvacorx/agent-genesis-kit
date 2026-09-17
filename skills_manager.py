@@ -4,7 +4,7 @@ Skills Manager CLI & Engine for Agent Genesis Kit
 Manage, search, activate, and deactivate skills from the offline Skills Vault (900+ skills)
 and Brand Design Systems (74 DESIGN.md files) without overloading token context.
 
-Architected with care by Viktor (Vik) - Viklabs (https://viklab.net)
+Architected with care by Viktor (Vik) - Viklabs (https://viklabs.pages.dev/)
 """
 
 import os
@@ -377,17 +377,57 @@ def cmd_sync(args, catalog):
         print("  Local .agents/skills does not exist in current directory.")
         return
         
-    global_target.mkdir(parents=True, exist_ok=True)
-    count = 0
-    for folder in local_target.iterdir():
-        if folder.is_dir():
-            dest = global_target / folder.name
-            if dest.exists():
-                shutil.rmtree(dest)
-            shutil.copytree(folder, dest)
-            print(f"  Synced: {folder.name}")
-            count += 1
-    print(f"\n✅ Synced {count} skills to global cache.\n")
+def cmd_doctor(args, catalog):
+    import subprocess
+    print("\n🩺 Running Agent Genesis System Healthcheck...\n" + "="*55)
+    
+    # 1. Python Check
+    py_ver = sys.version.split()[0]
+    print(f"  🐍 Python Version:       {py_ver} ", end="")
+    if sys.version_info >= (3, 10):
+        print("[\033[32mOK\033[0m]")
+    else:
+        print("[\033[33mWarning: Recommended 3.10+\033[0m]")
+
+    # 2. Git Check
+    try:
+        git_res = subprocess.run(["git", "--version"], capture_output=True, text=True, check=True)
+        print(f"  📦 Git Runtime:          {git_res.stdout.strip()} [\033[32mOK\033[0m]")
+    except Exception:
+        print("  📦 Git Runtime:          Not detected [\033[33mUsing HTTPS Fallback\033[0m]")
+
+    # 3. Vault & Catalog
+    print(f"  🧰 Skills Vault:          {len(catalog)} indexed skills [\033[32mOK\033[0m]")
+
+    # 4. Brand Design Systems
+    if DESIGN_LIB_DIR.is_dir():
+        brand_count = len([d for d in DESIGN_LIB_DIR.iterdir() if d.is_dir()])
+        print(f"  🎨 Brand Design Systems: {brand_count} brands available [\033[32mOK\033[0m]")
+    else:
+        print("  🎨 Brand Design Systems: Not found [\033[31mFAIL\033[0m]")
+
+    # 5. Active Environment Target
+    target = get_target_dir(args.target, args.global_install)
+    print(f"  🎯 Target Directory:     {target}")
+    
+    if target.is_dir():
+        active = [d.name for d in target.iterdir() if d.is_dir()]
+        est_tokens = len(active) * 150
+        print(f"  ⚡ Active Skills:        {len(active)} active (~{est_tokens:,} tokens) [\033[32mOK\033[0m]")
+        if active:
+            print(f"     Active: {', '.join(sorted(active)[:10])}{'...' if len(active) > 10 else ''}")
+    else:
+        print("  ⚡ Active Skills:        No active skills directory yet [\033[33mRun /setup or profile\033[0m]")
+
+    # 6. Memory Check
+    mem_file = Path.cwd() / "memory" / "MEMORY.md"
+    if mem_file.is_file():
+        print(f"  🧠 Living Memory:        Present at {mem_file.relative_to(Path.cwd())} [\033[32mOK\033[0m]")
+    else:
+        print("  🧠 Living Memory:        Not initialized in current workspace [\033[33mPending setup\033[0m]")
+
+    print("="*55)
+    print("✨ System diagnostic complete! Architected by viklabs.pages.dev\n")
 
 def main():
     parser = argparse.ArgumentParser(description="Skills Manager CLI for Agent Genesis Kit")
@@ -428,6 +468,11 @@ def main():
     # sync
     subparsers.add_parser("sync", help="Sync active skills between local and global")
 
+    # doctor
+    p_doc = subparsers.add_parser("doctor", help="Run diagnostic healthcheck")
+    p_doc.add_argument("--target", help="Target skills directory")
+    p_doc.add_argument("--global", dest="global_install", action="store_true", help="Check global directory")
+
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
@@ -451,6 +496,8 @@ def main():
         cmd_design(args)
     elif args.command == "sync":
         cmd_sync(args, catalog)
+    elif args.command == "doctor":
+        cmd_doctor(args, catalog)
 
 if __name__ == "__main__":
     main()

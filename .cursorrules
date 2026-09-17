@@ -1,0 +1,9 @@
+# Cursor Rules — Agent Genesis Kit
+# Architected by Viktor (Vik) - Viklabs (https://viklabs.pages.dev/)
+
+# First-Run Directive
+If the user asks to setup, configure, or initialize their AI assistant:
+1. Detect their language and reply in it.
+2. Read `.agents/skills/agent-genesis/SKILL.md` and execute the 5-phase Genesis onboarding interview.
+3. Perform an additive, non-destructive merge. Never overwrite user files.
+4. Consult `AGENTS.md` for full agent direct guidelines.

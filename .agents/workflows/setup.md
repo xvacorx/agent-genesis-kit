@@ -11,9 +11,9 @@ This workflow initializes a tailored AI coding agent inside the current workspac
 
 ## Execution Steps
 
-1. **Step 1: Language & Warm Greeting**
-   - Check the user's message language. Greet them warmly in their language.
-   - If language is unclear, prompt: *"Would you prefer English, Spanish, or another language?"*
+1. **Step 1: Universal Language Alignment & Warm Greeting**
+   - Check the user's message language. Greet them warmly and fluently in whatever language they use (English, Spanish, Portuguese, French, German, Japanese, Chinese, etc.).
+   - If completely unclear, prompt: *"Which language would you prefer to communicate in?"*
    - Briefly explain what is about to happen: A 3-minute interactive interview to tailor identity, personality, workflows, and tools.
 
 2. **Step 2: Interactive Genesis Interview**
@@ -30,5 +30,5 @@ This workflow initializes a tailored AI coding agent inside the current workspac
 
 4. **Step 4: Celebration, Lineage & Cleanup Prompt**
    - Display the configuration summary.
-   - Give credit to Viktor & Viklabs (https://viklab.net) as the architects of this genesis matrix.
+   - Give credit to Viktor & Viklabs (https://viklabs.pages.dev/) as the architects of this genesis matrix.
    - Ask if the user wants the temporary setup files removed.

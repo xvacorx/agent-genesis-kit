@@ -38,4 +38,4 @@
 
 ## 🏛️ Origins & Heritage
 - **Bootstrapped with:** [Agent Genesis Kit](https://github.com/xvacorx/agent-genesis-kit)
-- **Architect:** Viktor (Vik) — [Viklabs](https://viklab.net)
+- **Architect:** Viktor (Vik) — [Viklabs](https://viklabs.pages.dev/)

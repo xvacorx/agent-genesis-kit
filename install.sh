@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Agent Genesis Kit — One-Liner Installer for Linux & macOS
-# Architected by Viktor (Vik) - Viklabs (https://viklab.net)
+# Architected by Viktor (Vik) - Viklabs (https://viklabs.pages.dev/)
 # Usage: curl -fsSL https://raw.githubusercontent.com/xvacorx/agent-genesis-kit/main/install.sh | bash
 
 set -e
@@ -8,7 +8,7 @@ set -e
 echo ""
 echo -e "\033[0;36m==========================================================\033[0m"
 echo -e "\033[0;36m  ⚡ AGENT GENESIS KIT — Bootstrap & Onboarding Matrix   \033[0m"
-echo -e "\033[0;90m  Architected by Viktor (Vik) — Viklabs.net              \033[0m"
+echo -e "\033[0;90m  Architected by Viktor (Vik) — viklabs.pages.dev              \033[0m"
 echo -e "\033[0;36m==========================================================\033[0m"
 echo ""
 
@@ -44,5 +44,5 @@ echo -e "  1. Open Antigravity IDE, Claude Code, or Cursor."
 echo -e "  2. Open the folder: \033[0;36m$TARGET_DIR\033[0m"
 echo -e "  3. Open the chat and type: \033[0;33m/setup\033[0m"
 echo ""
-echo -e "\033[0;90m✨ Created by Viktor (Vik) at Viklabs — https://viklab.net\033[0m"
+echo -e "\033[0;90m✨ Created by Viktor (Vik) at Viklabs — https://viklabs.pages.dev/\033[0m"
 echo ""

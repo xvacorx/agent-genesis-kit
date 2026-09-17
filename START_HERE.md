@@ -25,7 +25,7 @@ Run this in your terminal to instantly set up the folder:
 ```text
 /setup
 ```
-*(You can also simply say: **"Hello, let's configure my agent"** or **"Hola, configuremos mi asistente"** in any language)*.
+*(You can speak in ANY language of the world — your assistant detects and adapts to you automatically)*.
 
 ---
 
@@ -45,5 +45,5 @@ Your AI will wake up and guide you through an interactive, step-by-step onboardi
 ---
 
 ### ✨ Origin & Credits
-Architected with care by **Viktor (Vik)** from **[Viklabs](https://viklab.net)**.
+Architected with care by **Viktor (Vik)** from **[Viklabs](https://viklabs.pages.dev/)**.
 Happy building!

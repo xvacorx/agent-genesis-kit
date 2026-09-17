@@ -1,5 +1,5 @@
 # Agent Genesis Kit — One-Liner Installer for Windows
-# Architected by Viktor (Vik) - Viklabs (https://viklab.net)
+# Architected by Viktor (Vik) - Viklabs (https://viklabs.pages.dev/)
 # Usage: irm https://raw.githubusercontent.com/xvacorx/agent-genesis-kit/main/install.ps1 | iex
 
 $ErrorActionPreference = "Stop"
@@ -7,7 +7,7 @@ $ErrorActionPreference = "Stop"
 Write-Host ""
 Write-Host "==========================================================" -ForegroundColor Cyan
 Write-Host "  ⚡ AGENT GENESIS KIT — Bootstrap & Onboarding Matrix   " -ForegroundColor Cyan
-Write-Host "  Architected by Viktor (Vik) — Viklabs.net              " -ForegroundColor DarkGray
+Write-Host "  Architected by Viktor (Vik) — viklabs.pages.dev              " -ForegroundColor DarkGray
 Write-Host "==========================================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -69,5 +69,5 @@ Write-Host "  2. Open the folder: $genesisFolder" -ForegroundColor Cyan
 Write-Host "  3. Open the chat and type:" -ForegroundColor Gray
 Write-Host "     /setup" -ForegroundColor Yellow
 Write-Host ""
-Write-Host "✨ Created by Viktor (Vik) at Viklabs — https://viklab.net" -ForegroundColor DarkGray
+Write-Host "✨ Created by Viktor (Vik) at Viklabs — https://viklabs.pages.dev/" -ForegroundColor DarkGray
 Write-Host ""

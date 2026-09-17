@@ -1,0 +1,62 @@
+name: Validate Agent Genesis Kit
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate Catalog JSON Integrity
+        run: |
+          python -c "
+          import json
+          with open('skills-vault/catalog.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+          print(f'✅ Catalog JSON is valid! {len(data)} skills indexed.')
+          "
+
+      - name: Run Skills Manager Healthcheck (Doctor)
+        run: |
+          python skills_manager.py doctor
+
+      - name: Test Design Systems Library
+        run: |
+          python skills_manager.py list-designs
+          python skills_manager.py design apple
+
+      - name: Check for Unsanitized Local Paths
+        run: |
+          python -c "
+          from pathlib import Path
+          suspicious = ['C:\\\\Users\\\\Viktor', 'Mi unidad', '100.99.161.1']
+          found = []
+          for f in Path('.').rglob('*.md'):
+              if '.git' in f.parts:
+                  continue
+              try:
+                  content = f.read_text(encoding='utf-8', errors='ignore')
+                  for s in suspicious:
+                      if s.lower() in content.lower():
+                          found.append(f'{f}: contains {s}')
+              except Exception:
+                  pass
+          if found:
+              print('FAIL: Found unsanitized strings:')
+              for item in found:
+                  print(f'  {item}')
+              exit(1)
+          else:
+              print('OK: No personal local paths found.')
+          "

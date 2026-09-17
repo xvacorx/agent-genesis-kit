@@ -1,0 +1,31 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files & logs
+*.log
+scratch/
+temp/
+tmp/
+*.tmp
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Python cache (if any script runs)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# Node / JS
+node_modules/
+dist/
+
+# System generated logs
+.system_generated/

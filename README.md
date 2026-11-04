@@ -94,12 +94,13 @@ python skills_manager.py mcp --client antigravity # or claude, cursor, windsurf
 
 </div>
 
-### 🛠️ 5 Native Supertools Exposed via MCP:
+### 🛠️ 6 Native Supertools Exposed via MCP:
 1. **`equip_skill` (STOP & EQUIP Protocol):** Autonomous skill unfreezer. Takes any specialized skill from the vault and mounts it into the prompt in real time before writing code.
 2. **`list_vault_skills`:** Ultra-fast keyword/category discovery across the 915+ offline skills vault.
 3. **`get_brand_design`:** Retrieves real design tokens, typography, and color palettes from 74 brands (`linear`, `stripe`, `apple`, `supabase`, `vercel`, `raycast`, etc.).
-4. **`check_contrast`:** Real-time WCAG 2.x contrast verification (Anti-Slop R-25: 4.5:1 body, 3.0:1 large text).
-5. **`graphify_status`:** Codebase AST knowledge graph telemetry and token reduction metrics.
+4. **`check_contrast`:** Mathematical WCAG 2.x relative luminance verification (Anti-Slop R-25: 4.5:1 body, 3.0:1 large text).
+5. **`get_graphify_status`:** Codebase AST knowledge graph telemetry, artifact health, and token reduction metrics.
+6. **`query_codebase_graph`:** AST graph traversal and code comprehension. Locates god classes, dependencies, and architectural structures without reading massive source files.
 
 ### 🔄 The STOP & EQUIP Execution Loop
 

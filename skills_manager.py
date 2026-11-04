@@ -43,6 +43,7 @@ PROFILES = {
             "unity-developer",
             "csharp-pro",
             "mobile-design",
+            "game-design-studio",
             "systematic-debugging",
             "code-review",
             "self-improving-agent",
@@ -326,8 +327,148 @@ def cmd_profile(args, catalog):
     # Save active profile metadata
     with open(ACTIVE_PROFILE_FILE, "w", encoding="utf-8") as f:
         json.dump({"active_profile": profile_key, "name": prof["name"]}, f, indent=2)
+
+    # Auto-configure 'agent-tools' MCP Server
+    sync_mcp_config()
         
     print(f"\n🎉 Profile '{profile_key}' active with {len(prof['skills'])} skills deployed!\n")
+
+def sync_mcp_config(client="all"):
+    """
+    Configures the 'agent-tools' MCP server across supported AI clients:
+    - Antigravity / Gemini: ~/.gemini/config/mcp_config.json + schemas in ~/.gemini/antigravity/mcp/agent-tools
+    - Claude Code: ~/.claude.json
+    - Cursor: ~/.cursor/mcp.json and .cursor/mcp.json
+    - Windsurf: ~/.codeium/windsurf/mcp_config.json
+    """
+    server_script = BASE_DIR / "mcp_server" / "server.py"
+    if not server_script.exists():
+        print(f"  ⚠️ MCP server script missing at: {server_script}")
+        return
+
+    python_exe = sys.executable
+    server_entry = {
+        "command": python_exe,
+        "args": [str(server_script)]
+    }
+
+    results = []
+
+    # 1. Antigravity / Gemini
+    if client in ("all", "antigravity", "gemini"):
+        gemini_cfg_file = Path.home() / ".gemini" / "config" / "mcp_config.json"
+        try:
+            gemini_cfg_file.parent.mkdir(parents=True, exist_ok=True)
+            data = {"mcpServers": {}}
+            if gemini_cfg_file.exists():
+                try:
+                    with open(gemini_cfg_file, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                except Exception:
+                    data = {"mcpServers": {}}
+            if "mcpServers" not in data:
+                data["mcpServers"] = {}
+            data["mcpServers"]["agent-tools"] = server_entry
+            with open(gemini_cfg_file, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2)
+            results.append(f"Antigravity config: {gemini_cfg_file}")
+        except Exception as e:
+            print(f"  ⚠️ Antigravity config error: {e}")
+
+        # Export Antigravity tool schemas for lazy loading
+        try:
+            target_dirs = [
+                Path.home() / ".gemini" / "antigravity" / "mcp" / "agent-tools",
+                Path.home() / ".gemini" / "antigravity-ide" / "mcp" / "agent-tools"
+            ]
+            sys.path.insert(0, str(server_script.parent))
+            import server as agent_server
+            for ide_dir in target_dirs:
+                ide_dir.mkdir(parents=True, exist_ok=True)
+                for t in agent_server.TOOLS:
+                    tool_name = t["name"]
+                    schema_file = ide_dir / f"{tool_name}.json"
+                    schema_content = {
+                        "name": tool_name,
+                        "description": t["description"],
+                        "parameters": t.get("inputSchema", {})
+                    }
+                    with open(schema_file, "w", encoding="utf-8") as f:
+                        json.dump(schema_content, f, indent=2)
+            results.append(f"Antigravity Tool Schemas: {len(agent_server.TOOLS)} tools exported")
+        except Exception as e:
+            print(f"  ⚠️ Tool schema export error: {e}")
+
+    # 2. Claude Code
+    if client in ("all", "claude"):
+        claude_file = Path.home() / ".claude.json"
+        try:
+            data = {}
+            if claude_file.exists():
+                try:
+                    with open(claude_file, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                except Exception:
+                    data = {}
+            if "mcpServers" not in data:
+                data["mcpServers"] = {}
+            data["mcpServers"]["agent-tools"] = server_entry
+            with open(claude_file, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2)
+            results.append(f"Claude Code config: {claude_file}")
+        except Exception:
+            pass
+
+    # 3. Cursor
+    if client in ("all", "cursor"):
+        for cursor_file in [Path.home() / ".cursor" / "mcp.json", Path.cwd() / ".cursor" / "mcp.json"]:
+            try:
+                cursor_file.parent.mkdir(parents=True, exist_ok=True)
+                data = {}
+                if cursor_file.exists():
+                    try:
+                        with open(cursor_file, "r", encoding="utf-8") as f:
+                            data = json.load(f)
+                    except Exception:
+                        data = {}
+                if "mcpServers" not in data:
+                    data["mcpServers"] = {}
+                data["mcpServers"]["agent-tools"] = server_entry
+                with open(cursor_file, "w", encoding="utf-8") as f:
+                    json.dump(data, f, indent=2)
+                results.append(f"Cursor config: {cursor_file}")
+            except Exception:
+                pass
+
+    # 4. Windsurf
+    if client in ("all", "windsurf"):
+        windsurf_file = Path.home() / ".codeium" / "windsurf" / "mcp_config.json"
+        try:
+            windsurf_file.parent.mkdir(parents=True, exist_ok=True)
+            data = {}
+            if windsurf_file.exists():
+                try:
+                    with open(windsurf_file, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                except Exception:
+                    data = {}
+            if "mcpServers" not in data:
+                data["mcpServers"] = {}
+            data["mcpServers"]["agent-tools"] = server_entry
+            with open(windsurf_file, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2)
+            results.append(f"Windsurf config: {windsurf_file}")
+        except Exception:
+            pass
+
+    print("\n🔌 Configured 'agent-tools' MCP Server:")
+    for r in results:
+        print(f"  ✓ {r}")
+    print("  💡 Any connected assistant can now use: list_vault_skills, equip_skill, get_brand_design, check_contrast, graphify_status\n")
+
+def cmd_mcp(args):
+    client = getattr(args, "client", "all")
+    sync_mcp_config(client=client)
 
 def cmd_list_designs(args):
     if not DESIGN_LIB_DIR.is_dir():
@@ -373,9 +514,22 @@ def cmd_sync(args, catalog):
     global_target = DEFAULT_GLOBAL_SKILLS
     
     print(f"\n🔄 Syncing active skills from Local -> Global cache ({global_target}):\n")
-    if not local_target.is_dir():
+    if local_target.is_dir():
+        global_target.mkdir(parents=True, exist_ok=True)
+        count = 0
+        for s in local_target.iterdir():
+            if s.is_dir():
+                dest = global_target / s.name
+                if dest.exists():
+                    shutil.rmtree(dest)
+                shutil.copytree(s, dest)
+                print(f"  ✓ Synced skill: {s.name}")
+                count += 1
+        print(f"\n  ✓ Successfully synced {count} skills.")
+    else:
         print("  Local .agents/skills does not exist in current directory.")
-        return
+
+    sync_mcp_config()
         
 def cmd_doctor(args, catalog):
     import subprocess
@@ -426,6 +580,23 @@ def cmd_doctor(args, catalog):
     else:
         print("  🧠 Living Memory:        Not initialized in current workspace [\033[33mPending setup\033[0m]")
 
+    # 7. MCP Server Health
+    mcp_script = BASE_DIR / "mcp_server" / "server.py"
+    if mcp_script.is_file():
+        gemini_cfg = Path.home() / ".gemini" / "config" / "mcp_config.json"
+        is_mcp_reg = False
+        if gemini_cfg.is_file():
+            try:
+                with open(gemini_cfg, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                is_mcp_reg = "agent-tools" in data.get("mcpServers", {})
+            except Exception:
+                pass
+        reg_status = "[\033[32mActive in Antigravity\033[0m]" if is_mcp_reg else "[\033[33mRun: python skills_manager.py mcp\033[0m]"
+        print(f"  🔌 MCP Server:          agent-tools {reg_status}")
+    else:
+        print(f"  🔌 MCP Server:          server.py missing [\033[31mFAIL\033[0m]")
+
     print("="*55)
     print("✨ System diagnostic complete! Architected by viklabs.pages.dev\n")
 
@@ -465,6 +636,10 @@ def main():
     p_design.add_argument("brand", help="Brand name (apple, stripe, linear, etc.)")
     p_design.add_argument("--copy-to", help="Destination file path to copy DESIGN.md")
 
+    # mcp
+    p_mcp = subparsers.add_parser("mcp", help="Configure 'agent-tools' MCP server for AI clients")
+    p_mcp.add_argument("--client", default="all", choices=["all", "antigravity", "claude", "cursor", "windsurf"], help="Target AI client to configure")
+
     # sync
     subparsers.add_parser("sync", help="Sync active skills between local and global")
 
@@ -494,6 +669,8 @@ def main():
         cmd_list_designs(args)
     elif args.command == "design":
         cmd_design(args)
+    elif args.command == "mcp":
+        cmd_mcp(args)
     elif args.command == "sync":
         cmd_sync(args, catalog)
     elif args.command == "doctor":

@@ -7,13 +7,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&color=2563eb)](LICENSE)
 [![Environment: Antigravity IDE](https://img.shields.io/badge/Antigravity_IDE-Native-purple.svg?style=for-the-badge&color=9333ea)](https://antigravity.google)
 [![Agent: Claude / Cursor / Windsurf](https://img.shields.io/badge/Compatibility-Universal-orange.svg?style=for-the-badge&color=f97316)](https://viklabs.pages.dev/)
-[![Skills Vault: 900+](https://img.shields.io/badge/Skills_Vault-911_Skills-blueviolet.svg?style=for-the-badge&color=7c3aed)](skills-vault/)
+[![Skills Vault: 915+](https://img.shields.io/badge/Skills_Vault-915+_Skills-blueviolet.svg?style=for-the-badge&color=7c3aed)](skills-vault/)
 [![Design Systems: 74 Brands](https://img.shields.io/badge/Design_Library-74_Brands-success.svg?style=for-the-badge&color=059669)](design-md-library/)
 [![Architected by: Viklabs](https://img.shields.io/badge/Architected_by-VikLabs-emerald.svg?style=for-the-badge&color=0284c7)](https://viklabs.pages.dev/)
 
 <p align="center">
   <b>Turn any generic LLM into a persistent, high-context senior engineering peer in under 3 minutes.</b><br>
-  Interactive setup • 911 offline skills vault • 74 world-class brand design systems • Dynamic language detection • Zero-destruction evolutionary merge
+  Interactive setup • 915+ offline skills vault • 74 world-class brand design systems • agent-tools MCP server • Zero-destruction evolutionary merge
 </p>
 
 ---
@@ -116,11 +116,32 @@ python skills_manager.py profile devops
 ```
 
 ### 🎮 Curated Token-Diet Profiles
-- **`gamedev`**: Unity 6 LTS, C# Pro, Game Feel & Juiciness, Android QA, Zero-GC architecture.
+- **`gamedev`**: Unity 6 LTS, C# Pro, Game Feel & Juiciness, AAA Game Design Templates (`game-design-studio`), Android QA, Zero-GC architecture.
 - **`web`**: Senior Frontend, UI Design System, React Best Practices, Web Design Guidelines.
 - **`devops`**: Docker Expert, Linux Scripting, Networking, Container Hardening, Monitoring.
 - **`all-in-one`**: Curated elite cross-domain master pack (< 2,200 tokens).
 - **`core`**: Pure minimal agentic core (< 600 tokens).
+
+---
+
+## 🔌 Universal Zero-Dependency MCP Server (`agent-tools`)
+
+Never manually swap profiles or improvise from static memory. `agent-genesis-kit` includes a native, zero-dependency JSON-RPC MCP server (`mcp_server/server.py`) that empowers any AI assistant to dynamically unfreeze skills on the fly:
+
+```bash
+# Configure MCP across all your installed IDEs in 1 second
+python skills_manager.py mcp
+
+# Or target a specific client
+python skills_manager.py mcp --client antigravity # or claude, cursor, windsurf
+```
+
+### 🛠️ 5 Native Supertools Exposed via MCP:
+1. **`equip_skill` (STOP & EQUIP Protocol):** Autonomous skill unfreezer. Takes any specialized skill from the vault and mounts it into the prompt in real time before writing code.
+2. **`list_vault_skills`:** Ultra-fast keyword/category discovery across the 915+ offline skills vault.
+3. **`get_brand_design`:** Retrieves real design tokens, typography, and color palettes from 74 brands (`linear`, `stripe`, `apple`, etc.).
+4. **`check_contrast`:** Real-time WCAG 2.x contrast verification (Anti-Slop R-25: 4.5:1 body, 3.0:1 large text).
+5. **`graphify_status`:** Codebase AST knowledge graph telemetry and token reduction metrics.
 
 ---
 

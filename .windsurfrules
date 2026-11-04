@@ -4,6 +4,7 @@
 # First-Run Directive
 If the user asks to setup, configure, or initialize their AI assistant:
 1. Detect their language and reply in it.
-2. Read `.agents/skills/agent-genesis/SKILL.md` and execute the 5-phase Genesis onboarding interview.
+2. Read `.agents/skills/agent-genesis/SKILL.md` and execute the 6-phase Genesis onboarding interview (Home vs. Motor topology, sync mentorship, `agent-tools` MCP, and profile).
 3. Perform an additive, non-destructive merge. Never overwrite user files.
-4. Consult `AGENTS.md` for full agent direct guidelines.
+4. Enforce STOP & EQUIP and Master Anti-Slop quality directives.
+5. Consult `AGENTS.md` for full agent guidelines.

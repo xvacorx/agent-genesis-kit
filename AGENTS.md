@@ -33,9 +33,13 @@ If this repository was opened by a user seeking to configure or initialize their
 ## 🛠️ Workflows & Skills Available
 
 - **Command `/setup`**: Launches the comprehensive interactive genesis interview.
-- **Master Skill `agent-genesis`**: Orchestrates personality definition, user profiling, hardware/cloud topology, and skill distribution.
+- **Master Skill `agent-genesis`**: Orchestrates personality definition, user profiling, Home vs. Motor folder topology, and skill distribution.
+- **MCP Server `agent-tools`**: 5 zero-dependency tools for dynamic skill unfreezing (`equip_skill`), vault query (`list_vault_skills`), brand design systems (`get_brand_design`), WCAG contrast verification (`check_contrast`), and AST graph inspection (`graphify_status`).
+- **Operating Protocols**:
+  - `STOP & EQUIP`: Zero improvisation from memory; dynamically equips specialized skills before generating code.
+  - `Master Anti-Slop`: Craftsmanship, depth, accessible contrast, editorial typography, zero boilerplate.
 - **Core Skills**:
   - `self-improving-agent`: Continuous learning from corrections and runtime feedback.
   - `systematic-debugging`: First-principles root-cause investigation before proposing fixes.
   - `antislop`: Zero generic, deprecated, or low-effort AI slop code generation.
-- **Skills Vault**: High-impact modular capabilities ready for selective activation (GameDev, Web, Python, DevOps, Graphify).
+- **Skills Vault**: 900+ high-impact modular capabilities ready for selective activation (GameDev, Web, Python, DevOps, Graphify).

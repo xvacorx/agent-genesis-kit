@@ -6393,5 +6393,12 @@
     "folder": "senior-frontend",
     "description": "Advanced architectural guidance and modern best practices for React, Next.js, Astro, TypeScript, state management, and web performance optimization.",
     "category": "frontend"
+  },
+  "game-design-studio": {
+    "name": "game-design-studio",
+    "folder": "game-design-studio",
+    "description": "Professional game design documentation, vertical slice scoping, art/sound bibles, game loops, economy models, and Unity 6 LTS best practices. Uses standardized AAA templates from tools/game_design_templates and tools/unity_6_reference.",
+    "category": "gamedev",
+    "source": "Claude-Code-Game-Studios"
   }
 }

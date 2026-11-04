@@ -38,23 +38,23 @@ DEFAULT_GLOBAL_SKILLS = Path.home() / ".gemini" / "config" / "skills"
 TOOLS = [
     {
         "name": "list_vault_skills",
-        "description": "Discovers and searches specialized skills from the offline Skills Vault (915+ skills) by keyword or domain category without bloating token context. Call this tool first to locate relevant skill names before invoking equip_skill. Returns matching skill entries with name, category, and capability summary.",
+        "description": "Searches and enumerates specialized skills from the offline vault (915+ skills) by keyword or category. Safe, read-only operation: reads local catalog.json with zero side effects, no mutations, and no network access. When query and category are both provided, applies a logical AND filter. When both are omitted or empty, returns the top general engineering skills up to the specified limit. If no skills match, returns a helpful message with suggested search keywords.\n\nWhen to use: Call to discover skill names and capabilities before installation.\nWhen NOT to use: Do not use to install or execute skills; call equip_skill once a specific skill name is chosen.\nReturns: Formatted list of matching skills containing name, category tag, and summary description, plus remaining match count.",
         "inputSchema": {
             "type": "object",
             "properties": {
                 "query": {
                     "type": "string",
-                    "description": "Search term or keyword to match against skill names and descriptions (e.g. 'kubernetes', 'react', 'shader', 'unity', 'security', 'docker'). If empty, returns skills within the specified category or top general skills.",
+                    "description": "Search term matched case-insensitively against skill names, folder paths, and descriptions (e.g. 'react', 'unity', 'docker', 'shader', 'kubernetes'). Empty string matches all skills.",
                     "default": ""
                 },
                 "category": {
                     "type": "string",
-                    "description": "Optional domain category filter. Allowed values: 'gamedev', 'devops', 'frontend', 'security', 'ai', 'general', 'database', 'testing'. If omitted, searches across all categories.",
+                    "description": "Domain filter. Allowed values: 'gamedev', 'devops', 'frontend', 'security', 'ai', 'general', 'database', 'testing'. Combined with query using logical AND. Empty string searches across all categories.",
                     "default": ""
                 },
                 "limit": {
                     "type": "integer",
-                    "description": "Maximum number of skill results to return (integer between 1 and 50). Defaults to 12 to preserve prompt tokens.",
+                    "description": "Maximum number of skill entries to return in a single call (integer from 1 to 50). Defaults to 12 to conserve context tokens.",
                     "default": 12
                 }
             }
@@ -62,17 +62,17 @@ TOOLS = [
     },
     {
         "name": "equip_skill",
-        "description": "Dynamically unfreezes and installs a specialized skill from the 915+ offline vault into the active assistant environment (STOP & EQUIP protocol). Call this tool whenever a task requires specialized domain knowledge, workflows, or rules (e.g. game design, anti-slop UI, Kubernetes, advanced debugging) before writing code. Returns the complete skill instruction markdown and destination path for immediate in-context execution. If a skill name is uncertain, call list_vault_skills first.",
+        "description": "Extracts and installs a specialized skill package from the offline vault into the assistant's active skills folder. Mutating file operation: creates or overwrites only the specific skill subfolder in the target directory (defaulting to ~/.gemini/config/skills); leaves all other workspace files untouched. Requires no network access or authentication. If the requested skill is not found, returns an error with available matching suggestions without modifying disk state.\n\nWhen to use: Call before writing domain-specific code (game design, mobile QA, shaders, advanced refactoring) to load specialized instructions directly into context.\nWhen NOT to use: Do not use to search or discover unknown skills; use list_vault_skills first.\nReturns: Success confirmation, destination path, and the full markdown instructions of the equipped skill for immediate context execution.",
         "inputSchema": {
             "type": "object",
             "properties": {
                 "skill_name": {
                     "type": "string",
-                    "description": "Exact name or folder of the skill to equip (e.g. 'taste-skill', 'antislop-ui', 'game-design-studio', 'csharp-pro', 'unity-6-mobile-master', 'kubernetes-expert'). Can be identified via list_vault_skills."
+                    "description": "Exact folder or catalog slug of the skill to equip (e.g. 'taste-skill', 'game-design-studio', 'csharp-pro', 'unity-6-mobile-master'). Case-insensitive; if an approximate name is given, matches against catalog index. Required."
                 },
                 "target_path": {
                     "type": "string",
-                    "description": "Optional absolute or relative path to the destination skills folder. If omitted, installs to the user's active global skills cache (~/.gemini/config/skills) or local workspace (.agents/skills).",
+                    "description": "Custom destination folder path. If omitted or empty, automatically resolves to active global skills directory (~/.gemini/config/skills) or local .agents/skills.",
                     "default": ""
                 }
             },
@@ -81,13 +81,13 @@ TOOLS = [
     },
     {
         "name": "get_brand_design",
-        "description": "Retrieves comprehensive design system specifications, color tokens, typography scales, elevation shadows, and anti-slop aesthetic rules from 74 world-class digital brands (design-md-library). Call this tool whenever styling user interfaces, web apps, or frontend components to deliver production-grade design instead of generic AI slop. Returns the brand's full markdown design tokens or an index of available brands if 'list' is passed.",
+        "description": "Retrieves design specifications, color tokens, typography scales, elevation shadows, and layout rules for 74 digital brands from the local design library. Safe, read-only operation: performs local disk read with no side effects, mutations, network requests, or authentication requirements. If an unknown brand slug is requested, falls back to substring matching or returns an alphabetical index of available brands.\n\nWhen to use: Call whenever styling UI components, design tokens, or pages to follow authentic brand aesthetics.\nWhen NOT to use: Do not use to calculate color accessibility compliance; use check_contrast to validate contrast ratios of retrieved colors.\nReturns: Full markdown design specification containing color palettes, typography, spacing, and component patterns; or a comma-separated index of all 74 brand names when brand='list'.",
         "inputSchema": {
             "type": "object",
             "properties": {
                 "brand": {
                     "type": "string",
-                    "description": "Brand slug identifier (e.g. 'linear', 'stripe', 'apple', 'supabase', 'vercel', 'raycast', 'figma', 'notion') to fetch its design tokens, or 'list' to view all 74 indexed brand design systems.",
+                    "description": "Lowercase brand slug (e.g. 'linear', 'stripe', 'apple', 'supabase', 'vercel', 'raycast', 'figma'). Pass 'list' or empty string to retrieve all 74 available brand slugs. Defaults to 'list'.",
                     "default": "list"
                 }
             }
@@ -95,17 +95,17 @@ TOOLS = [
     },
     {
         "name": "check_contrast",
-        "description": "Computes the mathematical WCAG 2.x relative luminance contrast ratio between foreground text and background colors, returning PASS/FAIL verdicts for normal text (ratio >= 4.5:1) and large/bold text (ratio >= 3.0:1). Call this tool whenever selecting color pairs for UI elements, text, buttons, or badges to prevent unreadable, inaccessible designs and enforce Anti-Slop quality standards. Returns the exact ratio, RGB conversion, WCAG AA compliance verdicts, and adjustment recommendations.",
+        "description": "Computes mathematical WCAG 2.x relative luminance contrast ratio between foreground and background colors. Non-destructive, read-only computation with no side effects, network access, or authentication. Automatically normalizes 3-digit hex (#fff -> #ffffff), 6-digit hex, and 8-digit hex (ignoring alpha). On malformed hex input, returns a descriptive error specifying expected hexadecimal syntax without throwing unhandled exceptions.\n\nWhen to use: Call whenever selecting color pairs for text, UI containers, buttons, or badges to verify WCAG AA compliance (>= 4.5:1 for normal body text, >= 3.0:1 for large or bold text >= 18pt).\nWhen NOT to use: Do not use for retrieving comprehensive brand styling or palettes; use get_brand_design instead.\nReturns: Mathematical ratio (e.g. 21.00:1), RGB conversions, PASS/FAIL verdicts for normal and large text, and luminance adjustment suggestions.",
         "inputSchema": {
             "type": "object",
             "properties": {
                 "foreground": {
                     "type": "string",
-                    "description": "Hex color code for the foreground text or icon. Accepts 3-digit (#fff) or 6-digit (#ffffff) hex strings, with or without leading '#' (e.g. '#FFFFFF', 'f97316', '#38bdf8')."
+                    "description": "Hex color for text or iconography. Accepts 3-digit (#fff), 6-digit (#ffffff), or 8-digit hex strings with or without leading '#'. Case-insensitive. Required."
                 },
                 "background": {
                     "type": "string",
-                    "description": "Hex color code for the surface or background container. Accepts 3-digit (#000) or 6-digit (#08090a) hex strings, with or without leading '#' (e.g. '#08090a', '#181726', '#000000')."
+                    "description": "Hex color for surface or container. Accepts 3-digit (#000), 6-digit (#08090a), or 8-digit hex strings with or without leading '#'. Case-insensitive. Required."
                 }
             },
             "required": ["foreground", "background"]
@@ -113,13 +113,13 @@ TOOLS = [
     },
     {
         "name": "get_graphify_status",
-        "description": "Inspects the operational state and artifact health of the Graphify AST knowledge graph for a repository. Call this tool before analyzing or refactoring codebases to verify if precomputed dependency graphs, AST god classes, and community clusters exist, enabling up to 80% token reduction during code exploration. Returns active graph status, node/edge metrics, artifact count, and recommended next steps.",
+        "description": "Inspects the operational presence and artifact health of the Graphify AST knowledge graph for a repository. Safe, read-only diagnostic: reads local metadata files with zero mutations, network calls, or side effects. If no graph exists (graphify-out/ missing), safely returns a non-error status stating the graph is unbuilt and provides the command to generate it.\n\nWhen to use: Call before analyzing large codebases to determine if precomputed AST dependency graphs exist.\nWhen NOT to use: Do not use to query specific symbols, god classes, or module dependencies; use query_codebase_graph instead for graph traversal.\nReturns: Graph operational state (ACTIVE or NOT BUILT), artifact count, node/edge metrics if indexed, and actionable initialization instructions.",
         "inputSchema": {
             "type": "object",
             "properties": {
                 "repo_path": {
                     "type": "string",
-                    "description": "Absolute or relative path to the target repository root to inspect. If omitted or empty, inspects the current working directory.",
+                    "description": "Absolute or relative filesystem path to the target repository root. If omitted, empty string, or '.', defaults to the current working directory. Read-only access.",
                     "default": ""
                 }
             }
@@ -127,18 +127,18 @@ TOOLS = [
     },
     {
         "name": "query_codebase_graph",
-        "description": "Queries the codebase AST knowledge graph to inspect symbol definitions, identify architectural god classes, trace file dependencies, or search community clusters without reading massive source files. Call this tool during codebase onboarding, architectural review, or debugging to retrieve targeted structural relationships with minimal token usage. Returns matched graph nodes, dependency edges, god class rankings, or architectural structure summary.",
+        "description": "Traverses and searches the codebase AST knowledge graph to inspect symbol definitions, identify architectural god classes, trace dependencies, or examine functional clusters. Safe, read-only query: performs local file reads without mutations, network calls, or authentication. If the AST graph has not been precomputed (graphify-out/ missing), safely executes a non-failing structural fallback scan of top directories and code files with instructions to run graphify.\n\nWhen to use: Call during codebase onboarding, architectural review, or refactoring to retrieve targeted structural relationships without loading massive source files.\nWhen NOT to use: Do not use if you only need high-level graph health or existence; call get_graphify_status instead.\nReturns: Structured architectural intelligence matching the query mode: summary statistics, ranked god classes by centrality, top connected dependencies, or matched symbol occurrences.",
         "inputSchema": {
             "type": "object",
             "properties": {
                 "query": {
                     "type": "string",
-                    "description": "Query target or operation mode: enter a class/function/symbol name to look up, or one of the special commands: 'summary' (overall architecture & metrics), 'god_nodes' (classes with highest complexity/dependencies), 'dependencies' (top connected modules), or 'communities' (detected functional clusters).",
+                    "description": "Target symbol name (class, function, file) or operational keyword: 'summary' (overall metrics), 'god_nodes' (classes with highest centrality/complexity), 'dependencies' (top connected modules), or 'communities' (cluster breakdown). Case-insensitive. Defaults to 'summary'.",
                     "default": "summary"
                 },
                 "repo_path": {
                     "type": "string",
-                    "description": "Absolute or relative path to the repository containing graphify-out/. If omitted or empty, queries the current working directory.",
+                    "description": "Absolute or relative path to the target repository root containing graphify-out/. If omitted, empty string, or '.', queries the current working directory.",
                     "default": ""
                 }
             }
@@ -333,7 +333,7 @@ def handle_check_contrast(args):
         f"• Large Text (>= 3.0:1):  {'✅ PASS (WCAG AA Large Compliant)' if large_pass else '❌ FAIL (Insufficient contrast)'}",
     ]
     if not normal_pass:
-        lines.append("\n⚠️ Anti-Slop Alert: Ratio is below 4.5:1 for body copy. Darken background or increase foreground luminance to ensure readability.")
+        lines.append("\n⚠️ Notice: Ratio is below 4.5:1 for body copy. Darken background or increase foreground luminance to ensure readability.")
     return "\n".join(lines)
 
 def handle_get_graphify_status(args):

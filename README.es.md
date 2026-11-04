@@ -9,6 +9,7 @@
 [![Agentes: Claude / Cursor / Windsurf](https://img.shields.io/badge/Compatibilidad-Universal-orange.svg?style=for-the-badge&color=f97316)](https://viklabs.pages.dev/)
 [![Vault de Skills: 915+](https://img.shields.io/badge/Skills_Vault-915+_Skills-blueviolet.svg?style=for-the-badge&color=7c3aed)](skills-vault/)
 [![Servidor MCP: agent-tools](https://img.shields.io/badge/Servidor_MCP-agent--tools-0284c7.svg?style=for-the-badge&color=0284c7)](mcp_server/)
+[![Glama MCP](https://glama.ai/mcp/servers/xvacorx/agent-genesis-kit/badges/score.svg)](https://glama.ai/mcp/servers/xvacorx/agent-genesis-kit)
 [![Sistemas de Diseño: 74 Marcas](https://img.shields.io/badge/Librer%C3%ADa_Dise%C3%B1o-74_Marcas-success.svg?style=for-the-badge&color=059669)](design-md-library/)
 [![Arquitectura: Viklabs](https://img.shields.io/badge/Arquitectura-VikLabs-emerald.svg?style=for-the-badge&color=0284c7)](https://viklabs.pages.dev/)
 
@@ -86,6 +87,12 @@ python skills_manager.py mcp
 # O especifica un cliente particular
 python skills_manager.py mcp --client antigravity # o claude, cursor, windsurf
 ```
+
+<div align="center">
+
+[![agent-tools MCP server – quality and maintenance score on Glama](https://glama.ai/mcp/servers/xvacorx/agent-genesis-kit/badges/card.svg)](https://glama.ai/mcp/servers/xvacorx/agent-genesis-kit)
+
+</div>
 
 ### 🛠️ 5 Superherramientas Nativas vía MCP:
 1. **`equip_skill` (Protocolo STOP & EQUIP):** Descongelador autónomo de skills. Extrae cualquier habilidad especializada del vault y la monta en el contexto en caliente antes de escribir código.

@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="arch-bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#140e26" />
+      <stop offset="50%" stop-color="#0a0814" />
+      <stop offset="100%" stop-color="#040308" />
+    </radialGradient>
+
+    <!-- Card Backgrounds -->
+    <linearGradient id="card-brain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18142e" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0d0a1c" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="card-runtime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b1c36" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0c0d1e" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="card-motor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#132333" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#09141f" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Card Borders -->
+    <linearGradient id="border-brain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.1" />
+    </linearGradient>
+
+    <linearGradient id="border-runtime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0.1" />
+    </linearGradient>
+
+    <linearGradient id="border-motor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.1" />
+    </linearGradient>
+
+    <!-- Data Bridge Gradient -->
+    <linearGradient id="bridge-purple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#60a5fa" />
+    </linearGradient>
+
+    <linearGradient id="bridge-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+
+    <!-- Elevation & Glow -->
+    <filter id="card-drop-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.75" />
+    </filter>
+
+    <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Grid Pattern -->
+    <pattern id="arch-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#312e52" fill-opacity="0.25" />
+    </pattern>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="560" fill="url(#arch-bg)" />
+  <rect width="1200" height="560" fill="url(#arch-grid)" />
+
+  <!-- Top Header Title -->
+  <g transform="translate(60, 45)">
+    <rect x="0" y="0" width="190" height="26" rx="13" fill="#18142a" stroke="#4c1d95" stroke-width="1" />
+    <circle cx="12" cy="13" r="3.5" fill="#a855f7" filter="url(#soft-glow)" />
+    <text x="24" y="17" font-family="'JetBrains Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#c084fc" letter-spacing="1">BIMODAL TOPOLOGY</text>
+
+    <text x="0" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="28" font-weight="900" fill="#ffffff" letter-spacing="-0.5">
+      The "Separated Brain" &amp; Dynamic MCP Architecture
+    </text>
+    <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="14" font-weight="400" fill="#94a3b8">
+      Zero cloud-sync loops • Real-time skill unfreezing via <tspan fill="#38bdf8" font-family="'JetBrains Mono', monospace">agent-tools</tspan> • Lightweight continuous memory
+    </text>
+  </g>
+
+  <!-- Connective Data Bridges (Behind Cards) -->
+  <g stroke-width="2" stroke-dasharray="6,6" fill="none">
+    <!-- Left to Center Bridge -->
+    <path d="M 390 320 L 460 320" stroke="url(#bridge-purple)" opacity="0.8" />
+    <circle cx="425" cy="320" r="4" fill="#a855f7" filter="url(#soft-glow)" />
+
+    <!-- Center to Right Bridge -->
+    <path d="M 740 320 L 810 320" stroke="url(#bridge-cyan)" opacity="0.8" />
+    <circle cx="775" cy="320" r="4" fill="#34d399" filter="url(#soft-glow)" />
+  </g>
+
+  <!-- COLUMN 1: THE BRAIN (HOME / CLOUD SYNC) -->
+  <g transform="translate(60, 150)" filter="url(#card-drop-shadow)">
+    <rect x="0" y="0" width="330" height="350" rx="14" fill="url(#card-brain)" stroke="url(#border-brain)" stroke-width="1.5" />
+    
+    <!-- Header Pill -->
+    <rect x="20" y="20" width="120" height="24" rx="6" fill="#241b42" />
+    <text x="32" y="36" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#c084fc">🧠 THE BRAIN</text>
+    
+    <text x="20" y="72" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="800" fill="#ffffff">
+      Home Folder
+    </text>
+    <text x="20" y="92" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a5b4fc">
+      ~/Documents/Agent <tspan fill="#64748b">or Drive</tspan>
+    </text>
+
+    <!-- Cloud Sync Badge -->
+    <g transform="translate(20, 112)">
+      <rect x="0" y="0" width="290" height="32" rx="6" fill="#130f24" stroke="#2d224d" stroke-width="1" />
+      <circle cx="16" cy="16" r="4" fill="#10b981" />
+      <text x="28" y="20" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0">Safe for Cloud Sync (Drive / OneDrive)</text>
+    </g>
+
+    <!-- Content Items -->
+    <g transform="translate(20, 162)" font-family="'JetBrains Mono', monospace" font-size="11.5">
+      <!-- Item 1 -->
+      <rect x="0" y="0" width="290" height="42" rx="6" fill="#0d0a18" stroke="#1f1a38" stroke-width="1" />
+      <text x="14" y="20" fill="#e2e8f0" font-weight="600">AGENTS.md</text>
+      <text x="14" y="34" fill="#64748b" font-size="10">Identity, protocols &amp; persona rules</text>
+
+      <!-- Item 2 -->
+      <rect x="0" y="50" width="290" height="42" rx="6" fill="#0d0a18" stroke="#1f1a38" stroke-width="1" />
+      <text x="14" y="70" fill="#38bdf8" font-weight="600">memory/MEMORY.md</text>
+      <text x="14" y="84" fill="#64748b" font-size="10">Living history, lessons &amp; decisions</text>
+
+      <!-- Item 3 -->
+      <rect x="0" y="100" width="290" height="42" rx="6" fill="#0d0a18" stroke="#1f1a38" stroke-width="1" />
+      <text x="14" y="120" fill="#a855f7" font-weight="600">docs/ &amp; library/</text>
+      <text x="14" y="134" fill="#64748b" font-size="10">Project architectures &amp; design specs</text>
+    </g>
+
+    <!-- Bottom Benefit Note -->
+    <text x="20" y="332" font-family="-apple-system, sans-serif" font-size="11" fill="#94a3b8">
+      ⚡ <tspan fill="#ffffff" font-weight="600">100% Lightweight:</tspan> Zero sync loops or locks
+    </text>
+  </g>
+
+  <!-- COLUMN 2: THE RUNTIME & CLIENTS (CENTER) -->
+  <g transform="translate(435, 135)" filter="url(#card-drop-shadow)">
+    <rect x="0" y="0" width="330" height="380" rx="14" fill="url(#card-runtime)" stroke="url(#border-runtime)" stroke-width="1.5" />
+    
+    <!-- Header Pill -->
+    <rect x="20" y="20" width="135" height="24" rx="6" fill="#1e293b" />
+    <text x="32" y="36" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#60a5fa">⚡ AI RUNTIME</text>
+    
+    <text x="20" y="72" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="800" fill="#ffffff">
+      Any Agent / IDE
+    </text>
+    <text x="20" y="92" font-family="'JetBrains Mono', monospace" font-size="11" fill="#93c5fd">
+      Universal MCP Consumer
+    </text>
+
+    <!-- Compatible Clients Chips -->
+    <g transform="translate(20, 112)" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">
+      <rect x="0" y="0" width="88" height="24" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <text x="10" y="16" fill="#cbd5e1">Antigravity</text>
+
+      <rect x="96" y="0" width="94" height="24" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <text x="106" y="16" fill="#cbd5e1">Claude Code</text>
+
+      <rect x="198" y="0" width="60" height="24" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <text x="208" y="16" fill="#cbd5e1">Cursor</text>
+
+      <rect x="0" y="30" width="76" height="24" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <text x="10" y="46" fill="#cbd5e1">Windsurf</text>
+
+      <rect x="84" y="30" width="80" height="24" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <text x="94" y="46" fill="#cbd5e1">OpenClaw</text>
+    </g>
+
+    <!-- MCP Interceptor Core Box -->
+    <g transform="translate(20, 185)">
+      <rect x="0" y="0" width="290" height="135" rx="8" fill="#080e18" stroke="#1e3a5f" stroke-width="1" />
+      
+      <!-- Mini title inside -->
+      <rect x="0" y="0" width="290" height="26" rx="8" fill="#0f2138" />
+      <text x="14" y="17" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#38bdf8">
+        STOP &amp; EQUIP INTERCEPTOR
+      </text>
+
+      <text x="14" y="48" font-family="-apple-system, sans-serif" font-size="11" fill="#e2e8f0">
+        1. User asks specialized task
+      </text>
+      <text x="14" y="68" font-family="-apple-system, sans-serif" font-size="11" fill="#93c5fd">
+        2. Agent halts static hallucination
+      </text>
+      <text x="14" y="88" font-family="-apple-system, sans-serif" font-size="11" fill="#fbbf24">
+        3. Calls <tspan font-family="'JetBrains Mono', monospace">equip_skill(name)</tspan> via MCP
+      </text>
+      <text x="14" y="108" font-family="-apple-system, sans-serif" font-size="11" fill="#34d399">
+        4. Generates zero-slop craft code
+      </text>
+    </g>
+
+    <!-- Bottom Bridge Note -->
+    <text x="20" y="358" font-family="-apple-system, sans-serif" font-size="11" fill="#94a3b8">
+      🔌 <tspan fill="#38bdf8" font-weight="600">agent-tools:</tspan> Standard JSON-RPC stdio
+    </text>
+  </g>
+
+  <!-- COLUMN 3: THE MOTOR (LOCAL / GIT / MCP SERVER) -->
+  <g transform="translate(810, 150)" filter="url(#card-drop-shadow)">
+    <rect x="0" y="0" width="330" height="350" rx="14" fill="url(#card-motor)" stroke="url(#border-motor)" stroke-width="1.5" />
+    
+    <!-- Header Pill -->
+    <rect x="20" y="20" width="120" height="24" rx="6" fill="#0f2d29" />
+    <text x="32" y="36" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#34d399">⚙️ THE MOTOR</text>
+    
+    <text x="20" y="72" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="800" fill="#ffffff">
+      Engine &amp; Vault
+    </text>
+    <text x="20" y="92" font-family="'JetBrains Mono', monospace" font-size="11" fill="#6ee7b7">
+      C:\AgentTools <tspan fill="#64748b">or ~/AgentTools</tspan>
+    </text>
+
+    <!-- Local High-Speed Storage Badge -->
+    <g transform="translate(20, 112)">
+      <rect x="0" y="0" width="290" height="32" rx="6" fill="#081816" stroke="#133834" stroke-width="1" />
+      <circle cx="16" cy="16" r="4" fill="#38bdf8" />
+      <text x="28" y="20" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0">Local NVMe / SSD • Zero Sync Bloat</text>
+    </g>
+
+    <!-- Content Items -->
+    <g transform="translate(20, 162)" font-family="'JetBrains Mono', monospace" font-size="11.5">
+      <!-- Item 1 -->
+      <rect x="0" y="0" width="290" height="42" rx="6" fill="#081318" stroke="#102a33" stroke-width="1" />
+      <text x="14" y="20" fill="#34d399" font-weight="600">agent-tools MCP Server</text>
+      <text x="14" y="34" fill="#64748b" font-size="10">Zero-dep Python JSON-RPC backend</text>
+
+      <!-- Item 2 -->
+      <rect x="0" y="50" width="290" height="42" rx="6" fill="#081318" stroke="#102a33" stroke-width="1" />
+      <text x="14" y="70" fill="#38bdf8" font-weight="600">skills-vault/ (915+ Skills)</text>
+      <text x="14" y="84" fill="#64748b" font-size="10">GameDev, Web, DevOps, AAA GDDs</text>
+
+      <!-- Item 3 -->
+      <rect x="0" y="100" width="290" height="42" rx="6" fill="#081318" stroke="#102a33" stroke-width="1" />
+      <text x="14" y="120" fill="#a7f3d0" font-weight="600">design-md-library/</text>
+      <text x="14" y="134" fill="#64748b" font-size="10">74 Brand Design Systems &amp; Tokens</text>
+    </g>
+
+    <!-- Bottom Benefit Note -->
+    <text x="20" y="332" font-family="-apple-system, sans-serif" font-size="11" fill="#94a3b8">
+      🚀 <tspan fill="#ffffff" font-weight="600">Instant Execution:</tspan> Local files &amp; Python CLI
+    </text>
+  </g>
+</svg>
+

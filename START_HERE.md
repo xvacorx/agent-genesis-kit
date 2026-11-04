@@ -1,5 +1,7 @@
 # 🚀 Quick Start: Agent Genesis Kit
 
+> 🌐 **Language / Idioma:** [English](START_HERE.md) • [Español](START_HERE.es.md)
+
 Welcome! You are just 3 minutes away from transforming your standard AI assistant into a tailored, persistent, high-performance engineering partner powered by the **Jarvis** architecture.
 
 ---

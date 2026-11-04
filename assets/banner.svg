@@ -78,9 +78,9 @@
   <g transform="translate(80, 75)">
     <!-- Genesis Pill Badge -->
     <g>
-      <rect x="0" y="0" width="240" height="28" rx="14" fill="#131124" stroke="url(#card-border)" stroke-width="1" />
+      <rect x="0" y="0" width="260" height="28" rx="14" fill="#131124" stroke="url(#card-border)" stroke-width="1" />
       <circle cx="14" cy="14" r="4" fill="#10b981" filter="url(#neon-glow)" />
-      <text x="28" y="18" font-family="'JetBrains Mono', 'SF Mono', Consolas, monospace" font-size="11" font-weight="600" fill="#a5b4fc" letter-spacing="1.2">SYSTEM: CORE v2.0 READY</text>
+      <text x="28" y="18" font-family="'JetBrains Mono', 'SF Mono', Consolas, monospace" font-size="11" font-weight="600" fill="#a5b4fc" letter-spacing="1.2">SYSTEM: v2.1 (MCP-POWERED)</text>
     </g>
 
     <!-- Main Typography Header -->
@@ -105,7 +105,7 @@
       <!-- Metric 1 -->
       <rect x="0" y="0" width="135" height="64" rx="10" fill="#0d0c18" stroke="#221f3b" stroke-width="1" />
       <text x="16" y="26" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#64748b" letter-spacing="0.5">OFFLINE VAULT</text>
-      <text x="16" y="50" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="800" fill="#ffffff">911<tspan font-size="14" fill="#a855f7"> SKILLS</tspan></text>
+      <text x="16" y="50" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="800" fill="#ffffff">915+<tspan font-size="13" fill="#a855f7"> SKILLS</tspan></text>
 
       <!-- Metric 2 -->
       <rect x="147" y="0" width="135" height="64" rx="10" fill="#0d0c18" stroke="#221f3b" stroke-width="1" />
@@ -154,7 +154,7 @@
       <!-- System Output -->
       <text x="0" y="44" fill="#10b981">✔ Language Engine: <tspan fill="#ffffff" font-weight="700">Universal Auto-Detect (Any Language)</tspan></text>
       <text x="0" y="68" fill="#10b981">✔ Workspace integrity: <tspan fill="#ffffff">Additive non-destructive merge</tspan></text>
-      <text x="0" y="92" fill="#10b981">✔ Graphify token-guard: <tspan fill="#34d399">ACTIVE (AST Knowledge Graph)</tspan></text>
+      <text x="0" y="92" fill="#10b981">✔ agent-tools MCP: <tspan fill="#34d399">ACTIVE (5 Supertools / JSON-RPC)</tspan></text>
 
       <!-- Interactive HUD Card inside Terminal -->
       <g transform="translate(0, 115)">
@@ -165,10 +165,10 @@
         <path d="M 0 28 L 472 28" stroke="#221e38" stroke-width="1" />
         <text x="14" y="18" font-size="11" font-weight="700" fill="#c084fc">⚡ ACTIVE PROFILE: CURATED ELITE (all-in-one)</text>
         
-        <text x="14" y="52" fill="#94a3b8">• Core Protocol:    <tspan fill="#38bdf8">self-improving</tspan>, <tspan fill="#38bdf8">systematic-debug</tspan>, <tspan fill="#38bdf8">antislop</tspan></text>
+        <text x="14" y="52" fill="#94a3b8">• Core Protocol:    <tspan fill="#38bdf8">STOP &amp; EQUIP</tspan>, <tspan fill="#38bdf8">anti-slop</tspan>, <tspan fill="#38bdf8">debug</tspan></text>
         <text x="14" y="74" fill="#94a3b8">• Design Systems:   <tspan fill="#818cf8">74 Brand Packs</tspan> (Stripe, Linear, Apple, Vercel)</text>
         <text x="14" y="96" fill="#94a3b8">• Living Memory:    <tspan fill="#10b981">memory/MEMORY.md</tspan> synchronized</text>
-        <text x="14" y="118" fill="#94a3b8">• Token Footprint:  <tspan fill="#fbbf24">&lt; 2,100 tokens</tspan> (Zero Prompt Bloat)</text>
+        <text x="14" y="118" fill="#94a3b8">• Topology Model:   <tspan fill="#fbbf24">Bimodal (Home Cloud / Motor Local)</tspan></text>
       </g>
 
       <!-- Terminal Status Line -->

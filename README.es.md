@@ -94,15 +94,23 @@ python skills_manager.py mcp --client antigravity # o claude, cursor, windsurf
 
 </div>
 
-### 🛠️ 8 Superherramientas Nativas vía MCP:
+### 🛠️ 9 Superherramientas Nativas en 3 Tríos Simétricos:
+
+| Dominio | Descubrimiento y Búsqueda | Ejecución Principal | Ciclo de Vida y Verificación |
+| :--- | :--- | :--- | :--- |
+| **Skills Vault** | `list_vault_skills` | `equip_skill` *(STOP & EQUIP)* | `unequip_skill` *(Limpieza de tokens)* |
+| **Sistemas de Diseño** | `list_brand_designs` *(74 marcas)* | `get_brand_design` *(Tokens y CSS)* | `check_contrast` *(WCAG 2.x AA)* |
+| **Grafo AST** | `inspect_codebase_graph` *(Salud)* | `build_codebase_graph` *(AST sin dependencias)* | `query_codebase_graph` *(God classes)* |
+
 1. **`list_vault_skills`:** Descubrimiento ultrarrápido por palabras clave o categorías en el vault de 915+ skills.
 2. **`equip_skill` (Protocolo STOP & EQUIP):** Descongelador autónomo de skills. Extrae cualquier habilidad especializada del vault y la monta en el contexto en caliente antes de escribir código.
 3. **`unequip_skill`:** Limpieza y ciclo de vida. Desinstala skills activas tras completar la tarea para preservar tokens de contexto.
-4. **`get_brand_design`:** Recupera tokens reales de color, tipografía y sombras de 74 marcas (`linear`, `stripe`, `apple`, `supabase`, `vercel`, `raycast`, etc.).
-5. **`check_contrast`:** Verificación matemática de luminancia relativa WCAG 2.x (Anti-Slop R-25: 4.5:1 texto normal, 3.0:1 texto grande).
-6. **`get_graphify_status`:** Telemetría del grafo AST de dependencias del proyecto, salud de artefactos y ahorro de tokens.
-7. **`build_codebase_graph`:** Construye grafos de conocimiento AST completos, ranking de god classes y mapas de dependencias sin dependencias externas.
-8. **`query_codebase_graph`:** Traversal y comprensión de código AST. Localiza god classes, dependencias y arquitectura sin volcar archivos masivos.
+4. **`list_brand_designs`:** Descubre los 74 sistemas de diseño de marcas mundiales disponibles (`linear`, `stripe`, `apple`, `supabase`, `vercel`, `raycast`, etc.).
+5. **`get_brand_design`:** Recupera tokens reales de color, tipografía y sombras de una marca específica.
+6. **`check_contrast`:** Verificación matemática de luminancia relativa WCAG 2.x (Anti-Slop R-25: 4.5:1 texto normal, 3.0:1 texto grande).
+7. **`inspect_codebase_graph`:** Telemetría del grafo AST de dependencias del proyecto, salud de artefactos y métricas de compilación.
+8. **`build_codebase_graph`:** Construye grafos de conocimiento AST completos, ranking de god classes y mapas de dependencias sin dependencias externas.
+9. **`query_codebase_graph`:** Traversal y comprensión de código AST. Localiza god classes, dependencias y arquitectura sin volcar archivos masivos.
 
 ### 🔄 El Bucle de Ejecución STOP & EQUIP
 

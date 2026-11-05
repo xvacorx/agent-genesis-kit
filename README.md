@@ -94,15 +94,23 @@ python skills_manager.py mcp --client antigravity # or claude, cursor, windsurf
 
 </div>
 
-### 🛠️ 8 Native Supertools Exposed via MCP:
+### 🛠️ 9 Native Supertools Across 3 Symmetrical Domain Trios:
+
+| Domain | Discovery & Search | Primary Execution | Lifecycle & Verification |
+| :--- | :--- | :--- | :--- |
+| **Skills Vault** | `list_vault_skills` | `equip_skill` *(STOP & EQUIP)* | `unequip_skill` *(Context cleanup)* |
+| **Brand Systems** | `list_brand_designs` *(74 brands)* | `get_brand_design` *(Tokens & CSS)* | `check_contrast` *(WCAG 2.x AA)* |
+| **Codebase AST** | `inspect_codebase_graph` *(Health)* | `build_codebase_graph` *(Zero-dep AST)* | `query_codebase_graph` *(God classes)* |
+
 1. **`list_vault_skills`:** Ultra-fast keyword/category discovery across the 915+ offline skills vault.
 2. **`equip_skill` (STOP & EQUIP Protocol):** Autonomous skill unfreezer. Takes any specialized skill from the vault and mounts it into the prompt in real time before writing code.
 3. **`unequip_skill`:** Clean lifecycle removal. Uninstalls equipped skills after task completion to preserve context tokens.
-4. **`get_brand_design`:** Retrieves real design tokens, typography, and color palettes from 74 brands (`linear`, `stripe`, `apple`, `supabase`, `vercel`, `raycast`, etc.).
-5. **`check_contrast`:** Mathematical WCAG 2.x relative luminance verification (Anti-Slop R-25: 4.5:1 body, 3.0:1 large text).
-6. **`get_graphify_status`:** Codebase AST knowledge graph telemetry, artifact health, and token reduction metrics.
-7. **`build_codebase_graph`:** Generates full AST knowledge graphs, god-class rankings, and dependency maps with zero external dependencies.
-8. **`query_codebase_graph`:** AST graph traversal and code comprehension. Locates god classes, dependencies, and architectural structures without reading massive source files.
+4. **`list_brand_designs`:** Discovers all 74 world-class digital brand design systems (`linear`, `stripe`, `apple`, `supabase`, `vercel`, `raycast`, etc.).
+5. **`get_brand_design`:** Retrieves authentic design tokens, typography, and elevation rules for any specific brand.
+6. **`check_contrast`:** Mathematical WCAG 2.x relative luminance verification (Anti-Slop R-25: 4.5:1 body, 3.0:1 large text).
+7. **`inspect_codebase_graph`:** Codebase AST knowledge graph telemetry, artifact health, and token reduction metrics.
+8. **`build_codebase_graph`:** Generates full AST knowledge graphs, god-class rankings, and dependency maps with zero external dependencies.
+9. **`query_codebase_graph`:** AST graph traversal and code comprehension. Locates god classes, dependencies, and architectural structures without reading massive source files.
 
 ### 🔄 The STOP & EQUIP Execution Loop
 

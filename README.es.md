@@ -94,13 +94,15 @@ python skills_manager.py mcp --client antigravity # o claude, cursor, windsurf
 
 </div>
 
-### 🛠️ 6 Superherramientas Nativas vía MCP:
-1. **`equip_skill` (Protocolo STOP & EQUIP):** Descongelador autónomo de skills. Extrae cualquier habilidad especializada del vault y la monta en el contexto en caliente antes de escribir código.
-2. **`list_vault_skills`:** Descubrimiento ultrarrápido por palabras clave o categorías en el vault de 915+ skills.
-3. **`get_brand_design`:** Recupera tokens reales de color, tipografía y sombras de 74 marcas (`linear`, `stripe`, `apple`, `supabase`, `vercel`, `raycast`, etc.).
-4. **`check_contrast`:** Verificación matemática de luminancia relativa WCAG 2.x (Anti-Slop R-25: 4.5:1 texto normal, 3.0:1 texto grande).
-5. **`get_graphify_status`:** Telemetría del grafo AST de dependencias del proyecto, salud de artefactos y ahorro de tokens.
-6. **`query_codebase_graph`:** Traversal y comprensión de código AST. Localiza god classes, dependencias y arquitectura sin volcar archivos masivos.
+### 🛠️ 8 Superherramientas Nativas vía MCP:
+1. **`list_vault_skills`:** Descubrimiento ultrarrápido por palabras clave o categorías en el vault de 915+ skills.
+2. **`equip_skill` (Protocolo STOP & EQUIP):** Descongelador autónomo de skills. Extrae cualquier habilidad especializada del vault y la monta en el contexto en caliente antes de escribir código.
+3. **`unequip_skill`:** Limpieza y ciclo de vida. Desinstala skills activas tras completar la tarea para preservar tokens de contexto.
+4. **`get_brand_design`:** Recupera tokens reales de color, tipografía y sombras de 74 marcas (`linear`, `stripe`, `apple`, `supabase`, `vercel`, `raycast`, etc.).
+5. **`check_contrast`:** Verificación matemática de luminancia relativa WCAG 2.x (Anti-Slop R-25: 4.5:1 texto normal, 3.0:1 texto grande).
+6. **`get_graphify_status`:** Telemetría del grafo AST de dependencias del proyecto, salud de artefactos y ahorro de tokens.
+7. **`build_codebase_graph`:** Construye grafos de conocimiento AST completos, ranking de god classes y mapas de dependencias sin dependencias externas.
+8. **`query_codebase_graph`:** Traversal y comprensión de código AST. Localiza god classes, dependencias y arquitectura sin volcar archivos masivos.
 
 ### 🔄 El Bucle de Ejecución STOP & EQUIP
 

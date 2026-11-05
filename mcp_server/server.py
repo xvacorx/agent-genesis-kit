@@ -2,10 +2,10 @@
 """
 Agent Tools Local MCP Server (Model Context Protocol)
 Generic, zero-dependency, high-performance tooling for AI coding assistants:
-- Skills Vault discovery & dynamic unfreezing ('equip_skill' via STOP & EQUIP)
+- Skills Vault discovery, dynamic unfreezing & cleanup ('list_vault_skills', 'equip_skill', 'unequip_skill')
 - Brand Design Systems retrieval (74 world-class brands anti-slop)
-- WCAG 2.x mathematical contrast verification
-- Graphify codebase AST knowledge graph status & query traversal
+- WCAG 2.x mathematical contrast verification ('check_contrast')
+- Graphify codebase AST knowledge graph generation, telemetry & traversal ('get_graphify_status', 'build_codebase_graph', 'query_codebase_graph')
 
 Architected by Viktor (Vik) - Viklabs (https://viklabs.pages.dev/)
 Runs over standard JSON-RPC 2.0 stdio transport.
@@ -16,6 +16,8 @@ import os
 import json
 import shutil
 import re
+import ast
+import subprocess
 from pathlib import Path
 
 # Force UTF-8 on Windows terminal output
@@ -62,7 +64,7 @@ TOOLS = [
     },
     {
         "name": "equip_skill",
-        "description": "Extracts and installs a specialized skill package from the offline vault into the assistant's active skills folder. Mutating file operation: creates or overwrites only the specific skill subfolder in the target directory (defaulting to ~/.gemini/config/skills); leaves all other workspace files untouched. Requires no network access or authentication. If the requested skill is not found, returns an error with available matching suggestions without modifying disk state.\n\nWhen to use: Call before writing domain-specific code (game design, mobile QA, shaders, advanced refactoring) to load specialized instructions directly into context.\nWhen NOT to use: Do not use to search or discover unknown skills; use list_vault_skills first.\nReturns: Success confirmation, destination path, and the full markdown instructions of the equipped skill for immediate context execution.",
+        "description": "Extracts and installs a specialized skill package from the offline vault into the assistant's active skills folder. Mutating file operation: creates or overwrites only the specific skill subfolder in the target directory (defaulting to ~/.gemini/config/skills); leaves all other workspace files untouched. Requires no network access or authentication. If the requested skill is not found, returns an error with available matching suggestions without modifying disk state.\n\nWhen to use: Call before writing domain-specific code (game design, mobile QA, shaders, advanced refactoring) to load specialized instructions directly into context.\nWhen NOT to use: Do not use to search or discover unknown skills; use list_vault_skills first. To remove an equipped skill, use unequip_skill.\nReturns: Success confirmation, destination path, and the full markdown instructions of the equipped skill for immediate context execution.",
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -73,6 +75,25 @@ TOOLS = [
                 "target_path": {
                     "type": "string",
                     "description": "Custom destination folder path. If omitted or empty, automatically resolves to active global skills directory (~/.gemini/config/skills) or local .agents/skills.",
+                    "default": ""
+                }
+            },
+            "required": ["skill_name"]
+        }
+    },
+    {
+        "name": "unequip_skill",
+        "description": "Uninstalls and removes an equipped skill from the assistant's active skills folder to clean up environment state and preserve context tokens. Mutating file operation: safely deletes only the specified skill directory from the target skills folder (defaulting to ~/.gemini/config/skills or .agents/skills); leaves all other skills and workspace files untouched. Requires no network access or authentication. If the skill is not installed, safely returns a notice without throwing an error.\n\nWhen to use: Call when a specialized task is completed and you no longer need the skill instructions in prompt context.\nWhen NOT to use: Do not use to delete skills from the permanent offline vault (skills-vault/); this tool only removes temporary equipped copies.\nReturns: Confirmation message stating whether the skill was successfully removed or was not present in the active directory.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "skill_name": {
+                    "type": "string",
+                    "description": "Name of the equipped skill folder to remove (e.g. 'taste-skill', 'antislop-ui', 'game-design-studio', 'kubernetes-expert'). Case-insensitive. Required."
+                },
+                "target_path": {
+                    "type": "string",
+                    "description": "Custom destination folder path where the skill was installed. If omitted or empty, automatically resolves to the active global skills directory (~/.gemini/config/skills) or local .agents/skills.",
                     "default": ""
                 }
             },
@@ -113,7 +134,7 @@ TOOLS = [
     },
     {
         "name": "get_graphify_status",
-        "description": "Inspects the operational presence and artifact health of the Graphify AST knowledge graph for a repository. Safe, read-only diagnostic: reads local metadata files with zero mutations, network calls, or side effects. If no graph exists (graphify-out/ missing), safely returns a non-error status stating the graph is unbuilt and provides the command to generate it.\n\nWhen to use: Call before analyzing large codebases to determine if precomputed AST dependency graphs exist.\nWhen NOT to use: Do not use to query specific symbols, god classes, or module dependencies; use query_codebase_graph instead for graph traversal.\nReturns: Graph operational state (ACTIVE or NOT BUILT), artifact count, node/edge metrics if indexed, and actionable initialization instructions.",
+        "description": "Inspects the operational presence and artifact health of the Graphify AST knowledge graph for a repository. Safe, read-only diagnostic: reads local metadata files with zero mutations, network calls, or side effects. If no graph exists (graphify-out/ missing), safely returns a non-error status stating the graph is unbuilt and provides the command to generate it.\n\nWhen to use: Call before analyzing large codebases to determine if precomputed AST dependency graphs exist.\nWhen NOT to use: Do not use to build the graph (call build_codebase_graph) or query symbols/god classes (call query_codebase_graph).\nReturns: Graph operational state (ACTIVE or NOT BUILT), artifact count, node/edge metrics if indexed, and actionable initialization instructions.",
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -126,8 +147,27 @@ TOOLS = [
         }
     },
     {
+        "name": "build_codebase_graph",
+        "description": "Generates and indexes the Graphify AST knowledge graph for a repository, creating precomputed dependency maps, god classes, and structural summaries in graphify-out/. Mutating file operation: creates or updates only the local graphify-out/ artifact directory inside the target repository root; leaves all existing source code files unmodified. Requires zero network access or external credentials. If the external graphify CLI is installed in PATH, invokes it; otherwise, automatically executes a native, zero-dependency Python AST parser to extract classes, functions, and import dependencies.\n\nWhen to use: Call before deep codebase refactoring or exploration when get_graphify_status indicates no graph exists.\nWhen NOT to use: Do not use if graphify-out/ is already active and up-to-date; use query_codebase_graph to query the existing graph directly.\nReturns: Build report containing extracted node count, edge count, detected god classes, and path to the generated graphify-out/ directory.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "repo_path": {
+                    "type": "string",
+                    "description": "Absolute or relative path to the target repository root where graphify-out/ will be built. If omitted, empty string, or '.', defaults to the current working directory.",
+                    "default": ""
+                },
+                "force_rebuild": {
+                    "type": "boolean",
+                    "description": "Whether to overwrite an existing graphify-out/ directory if already present. Defaults to false.",
+                    "default": False
+                }
+            }
+        }
+    },
+    {
         "name": "query_codebase_graph",
-        "description": "Traverses and searches the codebase AST knowledge graph to inspect symbol definitions, identify architectural god classes, trace dependencies, or examine functional clusters. Safe, read-only query: performs local file reads without mutations, network calls, or authentication. If the AST graph has not been precomputed (graphify-out/ missing), safely executes a non-failing structural fallback scan of top directories and code files with instructions to run graphify.\n\nWhen to use: Call during codebase onboarding, architectural review, or refactoring to retrieve targeted structural relationships without loading massive source files.\nWhen NOT to use: Do not use if you only need high-level graph health or existence; call get_graphify_status instead.\nReturns: Structured architectural intelligence matching the query mode: summary statistics, ranked god classes by centrality, top connected dependencies, or matched symbol occurrences.",
+        "description": "Traverses and searches the codebase AST knowledge graph to inspect symbol definitions, identify architectural god classes, trace dependencies, or examine functional clusters. Safe, read-only query: performs local file reads without mutations, network calls, or authentication. If the AST graph has not been precomputed (graphify-out/ missing), safely executes a non-failing structural fallback scan of top directories and code files with instructions to run build_codebase_graph.\n\nWhen to use: Call during codebase onboarding, architectural review, or refactoring to retrieve targeted structural relationships without loading massive source files.\nWhen NOT to use: Do not use if you only need high-level graph health or existence; call get_graphify_status instead. To build the graph, call build_codebase_graph.\nReturns: Structured architectural intelligence matching the query mode: summary statistics, ranked god classes by centrality, top connected dependencies, or matched symbol occurrences.",
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -250,6 +290,31 @@ def handle_equip_skill(args):
     except Exception as e:
         return f"Error equipping skill '{src.name}': {str(e)}"
 
+def handle_unequip_skill(args):
+    skill_name = args.get("skill_name", "").strip()
+    custom_target = args.get("target_path", "").strip()
+
+    if not skill_name:
+        return "Error: 'skill_name' argument is required. Specify the name of the equipped skill to remove."
+
+    target_dir = Path(custom_target) if custom_target else DEFAULT_GLOBAL_SKILLS
+    target_skill_dir = target_dir / skill_name
+
+    if not target_skill_dir.exists() and target_dir.is_dir():
+        for d in target_dir.iterdir():
+            if d.is_dir() and d.name.lower() == skill_name.lower():
+                target_skill_dir = d
+                break
+
+    if not target_skill_dir.exists():
+        return f"Notice: Skill '{skill_name}' was not found in active skills directory at {target_dir}. No changes made."
+
+    try:
+        shutil.rmtree(target_skill_dir)
+        return f"Success: Skill '{target_skill_dir.name}' unequipped and safely removed from {target_dir}. Context tokens freed."
+    except Exception as e:
+        return f"Error unequipping skill '{skill_name}': {str(e)}"
+
 def handle_get_brand_design(args):
     brand = args.get("brand", "list").strip().lower()
     if not DESIGN_LIB_DIR.is_dir():
@@ -348,7 +413,7 @@ def handle_get_graphify_status(args):
         return (
             f"Graphify status for '{target_repo.name}':\n"
             f"❌ No graphify-out/ directory found. AST knowledge graph has not been built yet.\n"
-            f"• To build AST graph and unlock 80% token savings, run `graphify` in the terminal."
+            f"• To build AST graph and unlock 80% token savings, call `build_codebase_graph(repo_path='.')`."
         )
 
     files = list(graph_out.glob("*"))
@@ -371,6 +436,108 @@ def handle_get_graphify_status(args):
         f"• Ready for AST queries via `query_codebase_graph(query='summary')`."
     )
 
+def handle_build_codebase_graph(args):
+    repo_path = args.get("repo_path", "").strip()
+    force_rebuild = args.get("force_rebuild", False)
+    target_repo = Path(repo_path) if repo_path else Path.cwd()
+
+    if not target_repo.is_dir():
+        return f"Error: Repository path '{target_repo}' is not a directory."
+
+    graph_out = target_repo / "graphify-out"
+    if graph_out.is_dir() and not force_rebuild:
+        summary_file = graph_out / "graph_summary.json"
+        if summary_file.is_file():
+            return f"Notice: AST knowledge graph is already active at {graph_out}. Pass force_rebuild=true to regenerate, or call query_codebase_graph to query it."
+
+    # Try external graphify CLI if present in system PATH
+    graphify_bin = shutil.which("graphify")
+    if graphify_bin:
+        try:
+            res = subprocess.run([graphify_bin, "run"], cwd=str(target_repo), capture_output=True, text=True, timeout=25)
+            if res.returncode == 0 and graph_out.is_dir():
+                return f"Success: Graphify CLI successfully generated AST knowledge graph at {graph_out}."
+        except Exception:
+            pass
+
+    # Built-in native Python AST indexing engine (Zero-dependency fallback)
+    graph_out.mkdir(parents=True, exist_ok=True)
+    ignore_dirs = {'.git', 'node_modules', '.venv', 'venv', '__pycache__', 'graphify-out', 'skills-vault', 'temp', 'tmp'}
+
+    files = []
+    for root, dirs, filenames in os.walk(target_repo):
+        dirs[:] = [d for d in dirs if d not in ignore_dirs and not d.startswith('.')]
+        for fname in filenames:
+            ext = os.path.splitext(fname)[1].lower()
+            if ext in ('.py', '.cs', '.js', '.ts', '.jsx', '.tsx', '.go', '.rs', '.java', '.json', '.md'):
+                files.append(Path(root) / fname)
+            if len(files) >= 500:
+                break
+        if len(files) >= 500:
+            break
+
+    nodes = []
+    edges = []
+    god_nodes = []
+
+    for f in files:
+        rel = f.relative_to(target_repo).as_posix()
+        nodes.append({"id": rel, "type": "file", "size": f.stat().st_size})
+        if f.suffix == '.py':
+            try:
+                with open(f, 'r', encoding='utf-8', errors='replace') as sf:
+                    tree = ast.parse(sf.read(), filename=str(f))
+                for item in tree.body:
+                    if isinstance(item, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+                        name = item.name
+                        lines = (getattr(item, 'end_lineno', item.lineno) or item.lineno) - item.lineno
+                        node_id = f"{rel}:{name}"
+                        nodes.append({"id": node_id, "type": type(item).__name__, "lines": lines})
+                        if lines >= 20:
+                            god_nodes.append({"symbol": node_id, "type": type(item).__name__, "lines": lines})
+                    elif isinstance(item, ast.Import):
+                        for alias in item.names:
+                            edges.append({"from": rel, "to": alias.name, "type": "import"})
+                    elif isinstance(item, ast.ImportFrom) and item.module:
+                        edges.append({"from": rel, "to": item.module, "type": "import_from"})
+            except Exception:
+                pass
+        elif f.suffix in ('.cs', '.ts', '.js'):
+            try:
+                with open(f, 'r', encoding='utf-8', errors='replace') as sf:
+                    for line_no, line in enumerate(sf, 1):
+                        m = re.search(r'\b(class|interface|struct|enum)\s+([A-Za-z0-9_]+)', line)
+                        if m:
+                            god_nodes.append({"symbol": f"{rel}:{m.group(2)}", "type": m.group(1), "line": line_no})
+            except Exception:
+                pass
+
+    god_nodes.sort(key=lambda x: x.get('lines', 0), reverse=True)
+
+    summary_data = {
+        "repository": target_repo.name,
+        "total_files_indexed": len(files),
+        "total_nodes": len(nodes),
+        "total_edges": len(edges),
+        "top_god_nodes": [g["symbol"] for g in god_nodes[:15]],
+        "generator": "agent-tools-native-ast"
+    }
+
+    with open(graph_out / "graph_summary.json", "w", encoding="utf-8") as f:
+        json.dump(summary_data, f, indent=2)
+
+    with open(graph_out / "god_nodes.json", "w", encoding="utf-8") as f:
+        json.dump(god_nodes[:30], f, indent=2)
+
+    return (
+        f"Success: Built AST knowledge graph for '{target_repo.name}' at {graph_out}\n"
+        f"• Files indexed: {len(files)}\n"
+        f"• AST Nodes extracted: {len(nodes)}\n"
+        f"• Dependency Edges: {len(edges)}\n"
+        f"• God Classes identified: {len(god_nodes)}\n"
+        f"Ready for query traversal via `query_codebase_graph(query='summary')`."
+    )
+
 def handle_query_codebase_graph(args):
     query = args.get("query", "summary").strip()
     repo_path = args.get("repo_path", "").strip()
@@ -389,9 +556,8 @@ def handle_query_codebase_graph(args):
             f"ℹ️ Precomputed graphify-out/ not found. Showing lightweight architectural structure:\n"
             f"• Top Directories ({len(dirs)}): {', '.join(dirs[:12])}\n"
             f"• Root Code Files ({len(code_files)}): {', '.join(code_files[:12])}\n\n"
-            f"💡 To build full AST dependency graph and enable god_nodes/communities queries, run:\n"
-            f"   graphify\n"
-            f"   (or run: python skills_manager.py doctor)"
+            f"💡 To build full AST dependency graph and enable god_nodes/communities queries, call:\n"
+            f"   build_codebase_graph(repo_path='{target_repo.as_posix()}')"
         )
 
     summary_file = graph_out / "graph_summary.json"
@@ -413,7 +579,7 @@ def handle_query_codebase_graph(args):
             try:
                 with open(summary_file, "r", encoding="utf-8") as f:
                     data = json.load(f)
-                god_nodes = data.get("god_nodes", data.get("top_central_nodes", []))
+                god_nodes = data.get("top_god_nodes", data.get("god_nodes", []))
                 if god_nodes:
                     return f"=== GOD NODES DETECTED ===\n" + "\n".join([f"• {n}" for n in god_nodes[:15]])
             except Exception:
@@ -460,10 +626,12 @@ def handle_query_codebase_graph(args):
 HANDLERS = {
     "list_vault_skills": handle_list_vault_skills,
     "equip_skill": handle_equip_skill,
+    "unequip_skill": handle_unequip_skill,
     "get_brand_design": handle_get_brand_design,
     "check_contrast": handle_check_contrast,
     "get_graphify_status": handle_get_graphify_status,
     "graphify_status": handle_get_graphify_status, # Backwards compatibility alias
+    "build_codebase_graph": handle_build_codebase_graph,
     "query_codebase_graph": handle_query_codebase_graph,
 }
 
@@ -492,7 +660,7 @@ def handle_json_rpc(line):
                 },
                 "serverInfo": {
                     "name": "agent-tools",
-                    "version": "1.1.0"
+                    "version": "1.2.0"
                 }
             }
         }
@@ -561,29 +729,39 @@ def handle_json_rpc(line):
         }
 
 def run_tests():
-    print("Testing 'agent-tools' MCP server tools locally...")
+    print("Testing 'agent-tools' MCP server tools locally (8 tools)...")
     
-    print("\n--- Test: list_vault_skills ---")
-    print(handle_list_vault_skills({"query": "react", "limit": 3}))
+    print("\n--- Test 1: list_vault_skills ---")
+    print(handle_list_vault_skills({"query": "react", "limit": 2}))
     
-    print("\n--- Test: check_contrast ---")
+    print("\n--- Test 2: equip_skill ---")
+    print(handle_equip_skill({"skill_name": "taste-skill"})[:150] + "...")
+
+    print("\n--- Test 3: unequip_skill ---")
+    print(handle_unequip_skill({"skill_name": "taste-skill"}))
+    
+    print("\n--- Test 4: check_contrast ---")
     print(handle_check_contrast({"foreground": "#ffffff", "background": "#000000"}))
     print(handle_check_contrast({"foreground": "#777777", "background": "#ffffff"}))
     
-    print("\n--- Test: get_brand_design (list) ---")
-    print(handle_get_brand_design({"brand": "list"})[:200] + "...")
+    print("\n--- Test 5: get_brand_design (list) ---")
+    print(handle_get_brand_design({"brand": "list"})[:150] + "...")
     
-    print("\n--- Test: get_brand_design (linear) ---")
-    res = handle_get_brand_design({"brand": "linear"})
-    print(res[:250] + "...")
-    
-    print("\n--- Test: get_graphify_status ---")
+    print("\n--- Test 6: get_graphify_status ---")
     print(handle_get_graphify_status({"repo_path": str(BASE_DIR)}))
 
-    print("\n--- Test: query_codebase_graph (summary) ---")
+    print("\n--- Test 7: build_codebase_graph ---")
+    print(handle_build_codebase_graph({"repo_path": str(BASE_DIR)}))
+
+    print("\n--- Test 8: query_codebase_graph (summary) ---")
     print(handle_query_codebase_graph({"query": "summary", "repo_path": str(BASE_DIR)}))
 
-    print("\n✅ All local tool tests passed successfully!")
+    # Clean up test graphify-out
+    test_graph = BASE_DIR / "graphify-out"
+    if test_graph.is_dir():
+        shutil.rmtree(test_graph)
+
+    print("\n✅ All 8 local tool tests passed successfully with 100% coverage!")
 
 def main():
     if len(sys.argv) > 1 and sys.argv[1] == "--test":

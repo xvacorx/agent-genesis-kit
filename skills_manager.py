@@ -464,7 +464,7 @@ def sync_mcp_config(client="all"):
     print("\n🔌 Configured 'agent-tools' MCP Server:")
     for r in results:
         print(f"  ✓ {r}")
-    print("  💡 Any connected assistant can now use: list_vault_skills, equip_skill, get_brand_design, check_contrast, get_graphify_status, query_codebase_graph\n")
+    print("  💡 Any connected assistant can now use: list_vault_skills, equip_skill, unequip_skill, get_brand_design, check_contrast, get_graphify_status, build_codebase_graph, query_codebase_graph\n")
 
 def cmd_mcp(args):
     client = getattr(args, "client", "all")

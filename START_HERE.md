@@ -48,5 +48,5 @@ Your AI will wake up and guide you through an interactive, step-by-step onboardi
 ---
 
 ### ✨ Origin & Credits
-Architected with care by **Viktor (Vik)** from **[Viklabs](https://viklabs.pages.dev/)**.
+Architected with care by **Viktor (Vik)** from **[Viklabs](https://viklabs.dev/)**.
 Happy building!

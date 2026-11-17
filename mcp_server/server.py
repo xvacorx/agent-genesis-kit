@@ -6,7 +6,7 @@ Generic, zero-dependency, high-performance tooling for AI coding assistants:
 - Brand Design Systems discovery, retrieval & accessibility ('list_brand_designs', 'get_brand_design', 'check_contrast')
 - Codebase AST Knowledge Graph health, construction & traversal ('inspect_codebase_graph', 'build_codebase_graph', 'query_codebase_graph')
 
-Architected by Viktor (Vik) - Viklabs (https://viklabs.pages.dev/)
+Architected by Viktor (Vik) - Viklabs (https://viklabs.dev/)
 Runs over standard JSON-RPC 2.0 stdio transport.
 """
 

@@ -4,7 +4,7 @@ Skills Manager CLI & Engine for Agent Genesis Kit
 Manage, search, activate, and deactivate skills from the offline Skills Vault (900+ skills)
 and Brand Design Systems (74 DESIGN.md files) without overloading token context.
 
-Architected with care by Viktor (Vik) - Viklabs (https://viklabs.pages.dev/)
+Architected with care by Viktor (Vik) - Viklabs (https://viklabs.dev/)
 """
 
 import os
@@ -598,7 +598,7 @@ def cmd_doctor(args, catalog):
         print(f"  🔌 MCP Server:          server.py missing [\033[31mFAIL\033[0m]")
 
     print("="*55)
-    print("✨ System diagnostic complete! Architected by viklabs.pages.dev\n")
+    print("✨ System diagnostic complete! Architected by viklabs.dev\n")
 
 def main():
     parser = argparse.ArgumentParser(description="Skills Manager CLI for Agent Genesis Kit")

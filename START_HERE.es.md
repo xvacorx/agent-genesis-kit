@@ -48,6 +48,6 @@ Tu IA se activará y te guiará en un onboarding interactivo y paso a paso:
 ---
 
 ### ✨ Origen y Créditos
-Diseñado y concebido por **Viktor (Vik)** desde **[Viklabs](https://viklabs.pages.dev/)**.  
+Diseñado y concebido por **Viktor (Vik)** desde **[Viklabs](https://viklabs.dev/)**.  
 ¡Feliz desarrollo!
 

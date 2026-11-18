@@ -30,3 +30,4 @@ dist/
 
 # System generated logs
 .system_generated/
+graphify-out/

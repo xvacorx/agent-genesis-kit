@@ -601,7 +601,7 @@ def handle_query_codebase_graph(args):
             try:
                 with open(god_nodes_file, "r", encoding="utf-8") as f:
                     data = json.load(f)
-                return f"=== GOD NODES (Highest Centrality & Complexity) ===\n\n" + json.dumps(data, indent=2)[:3000]
+                return "=== GOD NODES (Highest Centrality & Complexity) ===\n\n" + json.dumps(data, indent=2)[:3000]
             except Exception as e:
                 return f"Error reading god_nodes.json: {str(e)}"
         elif summary_file.is_file():
@@ -610,7 +610,7 @@ def handle_query_codebase_graph(args):
                     data = json.load(f)
                 god_nodes = data.get("top_god_nodes", data.get("god_nodes", []))
                 if god_nodes:
-                    return f"=== GOD NODES DETECTED ===\n" + "\n".join([f"• {n}" for n in god_nodes[:15]])
+                    return "=== GOD NODES DETECTED ===\n" + "\n".join([f"• {n}" for n in god_nodes[:15]])
             except Exception:
                 pass
         return "No specific god_nodes file found in graphify-out/. Try query='summary'."
@@ -680,8 +680,12 @@ def handle_json_rpc(line):
         }
 
     req_id = req.get("id")
-    method = req.get("method")
+    method = req.get("method") or ""
     params = req.get("params", {})
+
+    # JSON-RPC 2.0 notifications (including MCP notifications/initialized) must not receive a response
+    if method.startswith("notifications/") or method == "initialized" or (req_id is None and method != "initialize"):
+        return None
 
     if method == "initialize":
         return {

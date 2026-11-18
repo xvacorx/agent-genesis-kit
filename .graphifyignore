@@ -1,0 +1,8 @@
+# Exclude bundled skill/design catalogs and media assets from AST graph
+.git/
+__pycache__/
+.venv/
+skills-vault/
+design-md-library/
+assets/
+graphify-out/

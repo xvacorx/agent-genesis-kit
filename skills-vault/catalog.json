@@ -55,6 +55,12 @@
     "category": "general",
     "source": "community"
   },
+  "agent-genesis": {
+    "name": "agent-genesis",
+    "folder": "agent-genesis",
+    "description": "Master onboarding wizard for bootstrapping tailored AI agents with identity, rules, memory, and skills.",
+    "category": "core"
+  },
   "agent-manager-skill": {
     "name": "agent-manager-skill",
     "folder": "agent-manager-skill",
@@ -174,6 +180,13 @@
     "category": "general",
     "source": "community"
   },
+  "android-qa-playtesting": {
+    "name": "android-qa-playtesting",
+    "folder": "android-qa-playtesting",
+    "description": "Systematic QA, playtesting, and debugging workflow for Android games. Covers ADB commands, logcat crash dumps, memory leak profiling, and aspect ratio validation.",
+    "category": "gamedev",
+    "source": "chroma-cat-studios"
+  },
   "angular": {
     "name": "angular",
     "folder": "angular",
@@ -216,12 +229,61 @@
     "category": "general",
     "source": "community"
   },
+  "antigravity-skills-manager": {
+    "name": "antigravity-skills-manager",
+    "folder": "antigravity-skills-manager",
+    "description": "Global skills manager for Google Antigravity. Explore, search, install, and manage 300+ agent skills from the rmyndharis/antigravity-skills catalog using pure stdlib CLI tools.",
+    "category": "general",
+    "source": "vault"
+  },
   "antigravity-workflows": {
     "name": "antigravity-workflows",
     "folder": "antigravity-workflows",
     "description": "Orchestrate multiple Antigravity skills through guided workflows for SaaS MVP delivery, security audits, AI agent builds, and browser QA.",
     "category": "general",
     "source": "self"
+  },
+  "antislop": {
+    "name": "antislop",
+    "folder": "antislop",
+    "description": "Anti Slop: Rules for AI Coding Agents. The core filter with 38 rules (R-01 to R-38), Liveliness Toolkit (Energy, Rhythm, Motion dials), and Delivery Gate.",
+    "category": "design",
+    "source": "anti-slop (MIT)"
+  },
+  "antislop-code": {
+    "name": "antislop-code",
+    "folder": "antislop-code",
+    "description": "Code comment hygiene for antislop: purge generic AI-slop comments and decorative banners while preserving architectural intent and critical rationale.",
+    "category": "development",
+    "source": "anti-slop (MIT)"
+  },
+  "antislop-copywriting": {
+    "name": "antislop-copywriting",
+    "folder": "antislop-copywriting",
+    "description": "Copy and text skill for antislop: headlines, tone, CTAs, anti-AI-writing patterns, fake statistics purge, and honest product claims.",
+    "category": "design",
+    "source": "anti-slop (MIT)"
+  },
+  "antislop-human": {
+    "name": "antislop-human",
+    "folder": "antislop-human",
+    "description": "Human accessibility skill for antislop: WCAG 2.x contrast verification (with python checker), keyboard navigation, focus rings, and state completeness.",
+    "category": "design",
+    "source": "anti-slop (MIT)"
+  },
+  "antislop-layoutmobile": {
+    "name": "antislop-layoutmobile",
+    "folder": "antislop-layoutmobile",
+    "description": "Mobile layout skill for antislop: fluid reflow across screen sizes (phone to desktop), breakpoints, touch targets (44px), and avoiding rigid 2-state layouts.",
+    "category": "design",
+    "source": "anti-slop (MIT)"
+  },
+  "antislop-ui": {
+    "name": "antislop-ui",
+    "folder": "antislop-ui",
+    "description": "UI and visual skill for antislop: color palettes, layouts, anti-bento, anti-glassmorphism overuse, elevation shadows, and purposeful motion.",
+    "category": "design",
+    "source": "anti-slop (MIT)"
   },
   "api-design-principles": {
     "name": "api-design-principles",
@@ -327,6 +389,13 @@
     "description": ">",
     "category": "general",
     "source": "community"
+  },
+  "article-illustrations": {
+    "name": "article-illustrations",
+    "folder": "article-illustrations",
+    "description": "Generate hand-drawn 16:9 article illustrations featuring the Grav character IP. Turns article concepts into memorable whiteboard-sketch explanations with a recurring floating character, sparse annotations, and absurd metaphors.",
+    "category": "general",
+    "source": "vault"
   },
   "asana-automation": {
     "name": "asana-automation",
@@ -1406,6 +1475,13 @@
     "category": "general",
     "source": "community"
   },
+  "brandkit": {
+    "name": "brandkit",
+    "folder": "brandkit",
+    "description": "Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world presentations. Trained for minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app brand systems. Optimized for intentional logo concepting, refined composition, sparse typography, strong symbolic meaning, premium mockups, art-directed imagery, and flexible grid layouts.",
+    "category": "general",
+    "source": "vault"
+  },
   "brevo-automation": {
     "name": "brevo-automation",
     "folder": "brevo-automation",
@@ -1664,6 +1740,13 @@
     "description": "Windows 11 system management",
     "category": "general",
     "source": "https://github.com/NotMyself/claude-win11-speckit-update-skill"
+  },
+  "claw_router": {
+    "name": "claw_router",
+    "folder": "claw_router",
+    "description": "Smart LLM routing integration guidelines across OpenAI, Anthropic, Google, and DeepSeek via OpenClaw.",
+    "category": "ai-router",
+    "source": "jarvis-core"
   },
   "clean-code": {
     "name": "clean-code",
@@ -2316,6 +2399,13 @@
     "category": "general",
     "source": "community"
   },
+  "deploy-to-vercel": {
+    "name": "deploy-to-vercel",
+    "folder": "deploy-to-vercel",
+    "description": "Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\".",
+    "category": "web-frontend",
+    "source": "vault"
+  },
   "deployment-engineer": {
     "name": "deployment-engineer",
     "folder": "deployment-engineer",
@@ -2351,12 +2441,33 @@
     "category": "design-systems",
     "source": "https://github.com/google-labs-code/stitch-skills/tree/main/skills/design-md"
   },
+  "design-md-catalog": {
+    "name": "design-md-catalog",
+    "folder": "design-md-catalog",
+    "description": "Brand Design Systems Catalog. Query, inspect, and apply 74 real-world DESIGN.md design systems (Stripe, Linear, Apple, Supabase, Vercel, Nike, Claude, etc.) directly into any project root.",
+    "category": "design-systems",
+    "source": "voltagent/awesome-design-md"
+  },
   "design-orchestration": {
     "name": "design-orchestration",
     "folder": "design-orchestration",
     "description": "Modular skill: design-orchestration",
     "category": "general",
     "source": "community"
+  },
+  "design-taste-frontend": {
+    "name": "design-taste-frontend",
+    "folder": "taste-skill",
+    "description": "Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict pre-flight check.",
+    "category": "design-frontend",
+    "source": "vault"
+  },
+  "design-taste-frontend-v1": {
+    "name": "design-taste-frontend-v1",
+    "folder": "taste-skill-v1",
+    "description": "The original v1 taste-skill, preserved for projects depending on its exact behavior. The current default is `design-taste-frontend` (v2 experimental), which is a substantial rewrite. Use this v1 install name only if you need exact backward compatibility.",
+    "category": "design-frontend",
+    "source": "vault"
   },
   "devops-troubleshooter": {
     "name": "devops-troubleshooter",
@@ -2925,6 +3036,13 @@
     "category": "general",
     "source": "community"
   },
+  "full-output-enforcement": {
+    "name": "full-output-enforcement",
+    "folder": "output-skill",
+    "description": "Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output.",
+    "category": "general",
+    "source": "vault"
+  },
   "full-stack-orchestration-full-stack-feature": {
     "name": "full-stack-orchestration-full-stack-feature",
     "folder": "full-stack-orchestration-full-stack-feature",
@@ -2932,12 +3050,26 @@
     "category": "general",
     "source": "community"
   },
+  "game-design-studio": {
+    "name": "game-design-studio",
+    "folder": "game-design-studio",
+    "description": "Professional game design documentation, vertical slice scoping, art/sound bibles, game loops, economy models, and Unity 6 LTS best practices. Uses standardized AAA templates from tools/game_design_templates and tools/unity_6_reference.",
+    "category": "gamedev",
+    "source": "Claude-Code-Game-Studios"
+  },
   "game-development": {
     "name": "game-development",
     "folder": "game-development",
     "description": "Game development orchestrator. Routes to platform-specific skills based on project needs.",
     "category": "general",
     "source": "community"
+  },
+  "game-feel-and-juiciness": {
+    "name": "game-feel-and-juiciness",
+    "folder": "game-feel-and-juiciness",
+    "description": "Formulas, curves, physics, and tactile interaction design for game feel and juiciness. Covers procedural squash & stretch, trauma-based camera shake, and hitstop.",
+    "category": "gamedev",
+    "source": "chroma-cat-studios"
   },
   "gcp-cloud-run": {
     "name": "gcp-cloud-run",
@@ -3121,12 +3253,26 @@
     "category": "general",
     "source": "community"
   },
+  "gpt-taste": {
+    "name": "gpt-taste",
+    "folder": "gpt-tasteskill",
+    "description": "Elite UX/UI & Advanced GSAP Motion Engineer. Enforces Python-driven true randomization for layout variance, strict AIDA page structure, wide editorial typography (bans 6-line wraps), gapless bento grids, strict GSAP ScrollTriggers (pinning, stacking, scrubbing), inline micro-images, and massive section spacing.",
+    "category": "design-frontend",
+    "source": "vault"
+  },
   "grafana-dashboards": {
     "name": "grafana-dashboards",
     "folder": "grafana-dashboards",
     "description": "Create and manage production Grafana dashboards for real-time visualization of system and application metrics. Use when building monitoring dashboards, visualizing metrics, or creating operational ...",
     "category": "general",
     "source": "community"
+  },
+  "graphify": {
+    "name": "graphify",
+    "folder": "graphify",
+    "description": "Knowledge graph builder and query engine for codebases, god nodes, dependencies, and architecture.",
+    "category": "code-analysis",
+    "source": "jarvis-core"
   },
   "graphql": {
     "name": "graphql",
@@ -3261,6 +3407,13 @@
     "category": "general",
     "source": "community"
   },
+  "high-end-visual-design": {
+    "name": "high-end-visual-design",
+    "folder": "soft-skill",
+    "description": "Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that make a website feel expensive. Blocks all the common defaults that make AI designs look cheap or generic.",
+    "category": "general",
+    "source": "vault"
+  },
   "hosted-agents-v2-py": {
     "name": "hosted-agents-v2-py",
     "folder": "hosted-agents-v2-py",
@@ -3345,6 +3498,34 @@
     "category": "general",
     "source": "community"
   },
+  "image-to-code": {
+    "name": "image-to-code",
+    "folder": "image-to-code-skill",
+    "description": "Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s) itself, deeply analyze them, then implement the website to match them as closely as possible. In Codex, it must prefer large, readable, section-specific images instead of tiny compressed boards, generate fresh standalone images for sections or detail views instead of cropping old ones, avoid lazy under-generation, avoid cards-inside-cards-inside-cards UI, and keep the hero clean, spacious, readable, and visible on a small laptop.",
+    "category": "design-frontend",
+    "source": "vault"
+  },
+  "image_gen": {
+    "name": "image_gen",
+    "folder": "image_gen",
+    "description": "Generate images via BlockRun image API or native generate_image tool for assets, UI and artwork.",
+    "category": "ai-generation",
+    "source": "jarvis-core"
+  },
+  "imagegen-frontend-mobile": {
+    "name": "imagegen-frontend-mobile",
+    "folder": "imagegen-frontend-mobile",
+    "description": "Elite mobile app image-generation skill for creating premium, app-native screen concepts and flows. Designed for iOS, Android, and cross-platform mobile products. Prioritizes clean hierarchy, comfortably readable text, strong multi-screen consistency, controlled color palettes, non-generic creative direction, textured surfaces, image-led composition, tasteful custom iconography, and clean phone mockup framing. By default, screens should be shown inside a subtle premium iPhone or similar phone mockup with a visible frame, while the main focus stays on the app content itself. This skill generates images only. It does not write code.",
+    "category": "general",
+    "source": "vault"
+  },
+  "imagegen-frontend-web": {
+    "name": "imagegen-frontend-web",
+    "folder": "imagegen-frontend-web",
+    "description": "Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE — generate ONE separate horizontal image FOR EVERY section. A landing page with 8 sections produces 8 images. Never compress multiple sections into one image. Enforces composition variety (not always left-text / right-image), background-image freedom, varied CTAs, varied hero scales (giant / mid / mini minimalist), narrative concept spine, second-read moments, and a single consistent palette across all images. Optimized for landing pages, marketing sites, and product comps that developers or coding models can accurately recreate.",
+    "category": "general",
+    "source": "vault"
+  },
   "imagen": {
     "name": "imagen",
     "folder": "imagen",
@@ -3379,6 +3560,13 @@
     "description": "Create structured incident response runbooks with step-by-step procedures, escalation paths, and recovery actions. Use when building runbooks, responding to incidents, or establishing incident resp...",
     "category": "general",
     "source": "community"
+  },
+  "industrial-brutalist-ui": {
+    "name": "industrial-brutalist-ui",
+    "folder": "brutalist-skill",
+    "description": "Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast, utilitarian color, analog degradation effects. For data-heavy dashboards, portfolios, or editorial sites that need to feel like declassified blueprints.",
+    "category": "design-frontend",
+    "source": "vault"
   },
   "infinite-gratitude": {
     "name": "infinite-gratitude",
@@ -3863,6 +4051,13 @@
     "category": "general",
     "source": "community"
   },
+  "minimalist-ui": {
+    "name": "minimalist-ui",
+    "folder": "minimalist-skill",
+    "description": "Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows.",
+    "category": "design-frontend",
+    "source": "vault"
+  },
   "miro-automation": {
     "name": "miro-automation",
     "folder": "miro-automation",
@@ -3925,6 +4120,13 @@
     "description": "Master ES6+ features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, and functional programming patterns for writing clean, effici...",
     "category": "general",
     "source": "community"
+  },
+  "modern-web-guidance": {
+    "name": "modern-web-guidance",
+    "folder": "modern-web-guidance",
+    "category": "web-frontend",
+    "description": "Official Chrome/Edge/Firefox/MDN modern web platform guidance (269 features, Baseline compatibility, legacy-scan).",
+    "source": "GoogleChrome/modern-web-guidance (Apache 2.0)"
   },
   "monday-automation": {
     "name": "monday-automation",
@@ -4381,6 +4583,41 @@
     "category": "general",
     "source": "community"
   },
+  "ponytail": {
+    "name": "ponytail",
+    "folder": "ponytail",
+    "category": "quality",
+    "description": "Forces the simplest, minimal YAGNI/stdlib/native-first solution with lite, full, and ultra modes. Cuts boilerplate and over-engineering.",
+    "source": "UberGuidoZ/ponytail-ai-coding (MIT)"
+  },
+  "ponytail-audit": {
+    "name": "ponytail-audit",
+    "folder": "ponytail-audit",
+    "category": "quality",
+    "description": "Whole-repo audit for over-engineering: ranked list of what to delete, simplify, or replace with stdlib/native equivalents.",
+    "source": "UberGuidoZ/ponytail-ai-coding (MIT)"
+  },
+  "ponytail-debt": {
+    "name": "ponytail-debt",
+    "folder": "ponytail-debt",
+    "category": "quality",
+    "description": "Harvests every ponytail: shortcut comment in the codebase into a ceiling/upgrade debt ledger.",
+    "source": "UberGuidoZ/ponytail-ai-coding (MIT)"
+  },
+  "ponytail-help": {
+    "name": "ponytail-help",
+    "folder": "ponytail-help",
+    "category": "quality",
+    "description": "Quick-reference card for ponytail intensity modes (lite, full, ultra), skills, and commands.",
+    "source": "UberGuidoZ/ponytail-ai-coding (MIT)"
+  },
+  "ponytail-review": {
+    "name": "ponytail-review",
+    "folder": "ponytail-review",
+    "category": "quality",
+    "description": "Diff-focused code review hunting over-engineering: dead code, reinvented stdlib, unneeded deps, and speculative abstractions.",
+    "source": "UberGuidoZ/ponytail-ai-coding (MIT)"
+  },
   "popup-cro": {
     "name": "popup-cro",
     "folder": "popup-cro",
@@ -4541,6 +4778,13 @@
     "description": "Master network protocol reverse engineering including packet analysis, protocol dissection, and custom protocol documentation. Use when analyzing network traffic, understanding proprietary protocol...",
     "category": "general",
     "source": "community"
+  },
+  "proxmox-pve-architect": {
+    "name": "proxmox-pve-architect",
+    "folder": "proxmox-pve-architect",
+    "description": "Proxmox VE 8/9, ZFS mirror storage, LXC container orchestration, Netbird mesh networking, GLPI/ITAM automation, and GPU passthrough diagnostics for srv-conectica.",
+    "category": "devops",
+    "source": "conectica-it"
   },
   "pydantic-models-py": {
     "name": "pydantic-models-py",
@@ -4716,6 +4960,13 @@
     "description": "Automate Reddit tasks via Rube MCP (Composio): search subreddits, create posts, manage comments, and browse top content. Always search tools first for current schemas.",
     "category": "general",
     "source": "community"
+  },
+  "redesign-existing-projects": {
+    "name": "redesign-existing-projects",
+    "folder": "redesign-skill",
+    "description": "Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. Works with any CSS framework or vanilla CSS.",
+    "category": "general",
+    "source": "vault"
   },
   "reference-builder": {
     "name": "reference-builder",
@@ -4955,6 +5206,12 @@
     "category": "general",
     "source": "vibeship-spawner-skills (Apache 2.0)"
   },
+  "self-improving-agent": {
+    "name": "self-improving-agent",
+    "folder": "self-improving-agent",
+    "description": "Continuous learning engine that captures corrections, user preferences, and runtime lessons into living memory.",
+    "category": "core"
+  },
   "sendgrid-automation": {
     "name": "sendgrid-automation",
     "folder": "sendgrid-automation",
@@ -4968,6 +5225,12 @@
     "description": "Comprehensive software architecture skill for designing scalable, maintainable systems using ReactJS, NextJS, NodeJS, Express, React Native, Swift, Kotlin, Flutter, Postgres, GraphQL, Go, Python. I...",
     "category": "general",
     "source": "community"
+  },
+  "senior-frontend": {
+    "name": "senior-frontend",
+    "folder": "senior-frontend",
+    "description": "Advanced architectural guidance and modern best practices for React, Next.js, Astro, TypeScript, state management, and web performance optimization.",
+    "category": "frontend"
   },
   "senior-fullstack": {
     "name": "senior-fullstack",
@@ -5325,6 +5588,13 @@
     "description": "This skill should be used when the user asks about \\\\\\\"key startup",
     "category": "general",
     "source": "community"
+  },
+  "stitch-design-taste": {
+    "name": "stitch-design-taste",
+    "folder": "stitch-skill",
+    "description": "Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-generic UI standards — strict typography, calibrated color, asymmetric layouts, perpetual micro-motion, and hardware-accelerated performance.",
+    "category": "design-frontend",
+    "source": "vault"
   },
   "stitch-ui-design": {
     "name": "stitch-ui-design",
@@ -5725,6 +5995,13 @@
     "category": "general",
     "source": "community"
   },
+  "unity-6-mobile-master": {
+    "name": "unity-6-mobile-master",
+    "folder": "unity-6-mobile-master",
+    "description": "Elite Unity 6 LTS mobile game development skill. Covers URP 2D, zero-GC architecture, frame pacing/Swappy, Android 16 (API 36) compliance, and memory-safe pooling.",
+    "category": "gamedev",
+    "source": "chroma-cat-studios"
+  },
   "unity-developer": {
     "name": "unity-developer",
     "folder": "unity-developer",
@@ -5816,6 +6093,20 @@
     "category": "web-frontend",
     "source": "community"
   },
+  "vercel-cli-with-tokens": {
+    "name": "vercel-cli-with-tokens",
+    "folder": "vercel-cli-with-tokens",
+    "description": "Deploy and manage projects on Vercel using token-based authentication. Use when working with Vercel CLI using access tokens rather than interactive login — e.g. \"deploy to vercel\", \"set up vercel\", \"add environment variables to vercel\".",
+    "category": "web-frontend",
+    "source": "vault"
+  },
+  "vercel-composition-patterns": {
+    "name": "vercel-composition-patterns",
+    "folder": "composition-patterns",
+    "description": "Modular skill: vercel-composition-patterns",
+    "category": "web-frontend",
+    "source": "vault"
+  },
   "vercel-deploy-claimable": {
     "name": "vercel-deploy-claimable",
     "folder": "vercel-deploy-claimable",
@@ -5829,6 +6120,34 @@
     "description": "Expert knowledge for deploying to Vercel with Next.js Use when: vercel, deploy, deployment, hosting, production.",
     "category": "web-frontend",
     "source": "vibeship-spawner-skills (Apache 2.0)"
+  },
+  "vercel-optimize": {
+    "name": "vercel-optimize",
+    "folder": "vercel-optimize",
+    "description": "Use for Vercel cost and performance optimization on deployed projects, especially Next.js, SvelteKit, Nuxt, and limited Astro apps. Collect Vercel metrics, usage, project config, and code scan results first; investigate only metric-backed candidates; produce ranked recommendations grounded in verified files and version-aware Vercel/framework docs. Trigger for Vercel bill reduction, slow or expensive routes, caching opportunities, Function Invocations, Build Minutes, Fast Data Transfer, Core Web Vitals, Bot Management, Fluid compute, or cost breakdown requests.",
+    "category": "web-frontend",
+    "source": "vault"
+  },
+  "vercel-react-best-practices": {
+    "name": "vercel-react-best-practices",
+    "folder": "react-best-practices",
+    "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
+    "category": "web-frontend",
+    "source": "vault"
+  },
+  "vercel-react-native-skills": {
+    "name": "vercel-react-native-skills",
+    "folder": "react-native-skills",
+    "description": "Modular skill: vercel-react-native-skills",
+    "category": "web-frontend",
+    "source": "vault"
+  },
+  "vercel-react-view-transitions": {
+    "name": "vercel-react-view-transitions",
+    "folder": "react-view-transitions",
+    "description": "Guide for implementing smooth, native-feeling animations using React's View Transition API (`<ViewTransition>` component, `addTransitionType`, and CSS view transition pseudo-elements). Use this skill whenever the user wants to add page transitions, animate route changes, create shared element animations, animate enter/exit of components, animate list reorder, implement directional (forward/back) navigation animations, or integrate view transitions in Next.js. Also use when the user mentions view transitions, `startViewTransition`, `ViewTransition`, transition types, or asks about animating between UI states in React without third-party animation libraries.",
+    "category": "web-frontend",
+    "source": "vault"
   },
   "verification-before-completion": {
     "name": "verification-before-completion",
@@ -6033,6 +6352,13 @@
     "category": "general",
     "source": "community"
   },
+  "writing-guidelines": {
+    "name": "writing-guidelines",
+    "folder": "writing-guidelines",
+    "description": "Review docs/prose for Writing Guidelines compliance. Use when asked to \"review my docs\", \"check writing style\", \"audit prose\", \"review docs voice and tone\", or \"check this page against the writing handbook\".",
+    "category": "general",
+    "source": "vault"
+  },
   "writing-plans": {
     "name": "writing-plans",
     "folder": "writing-plans",
@@ -6116,289 +6442,5 @@
     "description": "Create Zustand stores with TypeScript, subscribeWithSelector middleware, and proper state/action separation. Use when building React state management, creating global stores, or implementing reacti...",
     "category": "general",
     "source": "community"
-  },
-  "antigravity-skills-manager": {
-    "name": "antigravity-skills-manager",
-    "folder": "antigravity-skills-manager",
-    "description": "Global skills manager for Google Antigravity. Explore, search, install, and manage 300+ agent skills from the rmyndharis/antigravity-skills catalog using pure stdlib CLI tools.",
-    "category": "general",
-    "source": "vault"
-  },
-  "article-illustrations": {
-    "name": "article-illustrations",
-    "folder": "article-illustrations",
-    "description": "Generate hand-drawn 16:9 article illustrations featuring the Grav character IP. Turns article concepts into memorable whiteboard-sketch explanations with a recurring floating character, sparse annotations, and absurd metaphors.",
-    "category": "general",
-    "source": "vault"
-  },
-  "brandkit": {
-    "name": "brandkit",
-    "folder": "brandkit",
-    "description": "Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world presentations. Trained for minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app brand systems. Optimized for intentional logo concepting, refined composition, sparse typography, strong symbolic meaning, premium mockups, art-directed imagery, and flexible grid layouts.",
-    "category": "general",
-    "source": "vault"
-  },
-  "industrial-brutalist-ui": {
-    "name": "industrial-brutalist-ui",
-    "folder": "brutalist-skill",
-    "description": "Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast, utilitarian color, analog degradation effects. For data-heavy dashboards, portfolios, or editorial sites that need to feel like declassified blueprints.",
-    "category": "design-frontend",
-    "source": "vault"
-  },
-  "vercel-composition-patterns": {
-    "name": "vercel-composition-patterns",
-    "folder": "composition-patterns",
-    "description": "Modular skill: vercel-composition-patterns",
-    "category": "web-frontend",
-    "source": "vault"
-  },
-  "deploy-to-vercel": {
-    "name": "deploy-to-vercel",
-    "folder": "deploy-to-vercel",
-    "description": "Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\".",
-    "category": "web-frontend",
-    "source": "vault"
-  },
-  "design-md-catalog": {
-    "name": "design-md-catalog",
-    "folder": "design-md-catalog",
-    "description": "Brand Design Systems Catalog. Query, inspect, and apply 74 real-world DESIGN.md design systems (Stripe, Linear, Apple, Supabase, Vercel, Nike, Claude, etc.) directly into any project root.",
-    "category": "design-systems",
-    "source": "voltagent/awesome-design-md"
-  },
-  "gpt-taste": {
-    "name": "gpt-taste",
-    "folder": "gpt-tasteskill",
-    "description": "Elite UX/UI & Advanced GSAP Motion Engineer. Enforces Python-driven true randomization for layout variance, strict AIDA page structure, wide editorial typography (bans 6-line wraps), gapless bento grids, strict GSAP ScrollTriggers (pinning, stacking, scrubbing), inline micro-images, and massive section spacing.",
-    "category": "design-frontend",
-    "source": "vault"
-  },
-  "image-to-code": {
-    "name": "image-to-code",
-    "folder": "image-to-code-skill",
-    "description": "Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s) itself, deeply analyze them, then implement the website to match them as closely as possible. In Codex, it must prefer large, readable, section-specific images instead of tiny compressed boards, generate fresh standalone images for sections or detail views instead of cropping old ones, avoid lazy under-generation, avoid cards-inside-cards-inside-cards UI, and keep the hero clean, spacious, readable, and visible on a small laptop.",
-    "category": "design-frontend",
-    "source": "vault"
-  },
-  "imagegen-frontend-mobile": {
-    "name": "imagegen-frontend-mobile",
-    "folder": "imagegen-frontend-mobile",
-    "description": "Elite mobile app image-generation skill for creating premium, app-native screen concepts and flows. Designed for iOS, Android, and cross-platform mobile products. Prioritizes clean hierarchy, comfortably readable text, strong multi-screen consistency, controlled color palettes, non-generic creative direction, textured surfaces, image-led composition, tasteful custom iconography, and clean phone mockup framing. By default, screens should be shown inside a subtle premium iPhone or similar phone mockup with a visible frame, while the main focus stays on the app content itself. This skill generates images only. It does not write code.",
-    "category": "general",
-    "source": "vault"
-  },
-  "imagegen-frontend-web": {
-    "name": "imagegen-frontend-web",
-    "folder": "imagegen-frontend-web",
-    "description": "Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE — generate ONE separate horizontal image FOR EVERY section. A landing page with 8 sections produces 8 images. Never compress multiple sections into one image. Enforces composition variety (not always left-text / right-image), background-image freedom, varied CTAs, varied hero scales (giant / mid / mini minimalist), narrative concept spine, second-read moments, and a single consistent palette across all images. Optimized for landing pages, marketing sites, and product comps that developers or coding models can accurately recreate.",
-    "category": "general",
-    "source": "vault"
-  },
-  "minimalist-ui": {
-    "name": "minimalist-ui",
-    "folder": "minimalist-skill",
-    "description": "Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows.",
-    "category": "design-frontend",
-    "source": "vault"
-  },
-  "full-output-enforcement": {
-    "name": "full-output-enforcement",
-    "folder": "output-skill",
-    "description": "Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output.",
-    "category": "general",
-    "source": "vault"
-  },
-  "vercel-react-best-practices": {
-    "name": "vercel-react-best-practices",
-    "folder": "react-best-practices",
-    "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
-    "category": "web-frontend",
-    "source": "vault"
-  },
-  "vercel-react-native-skills": {
-    "name": "vercel-react-native-skills",
-    "folder": "react-native-skills",
-    "description": "Modular skill: vercel-react-native-skills",
-    "category": "web-frontend",
-    "source": "vault"
-  },
-  "vercel-react-view-transitions": {
-    "name": "vercel-react-view-transitions",
-    "folder": "react-view-transitions",
-    "description": "Guide for implementing smooth, native-feeling animations using React's View Transition API (`<ViewTransition>` component, `addTransitionType`, and CSS view transition pseudo-elements). Use this skill whenever the user wants to add page transitions, animate route changes, create shared element animations, animate enter/exit of components, animate list reorder, implement directional (forward/back) navigation animations, or integrate view transitions in Next.js. Also use when the user mentions view transitions, `startViewTransition`, `ViewTransition`, transition types, or asks about animating between UI states in React without third-party animation libraries.",
-    "category": "web-frontend",
-    "source": "vault"
-  },
-  "redesign-existing-projects": {
-    "name": "redesign-existing-projects",
-    "folder": "redesign-skill",
-    "description": "Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. Works with any CSS framework or vanilla CSS.",
-    "category": "general",
-    "source": "vault"
-  },
-  "high-end-visual-design": {
-    "name": "high-end-visual-design",
-    "folder": "soft-skill",
-    "description": "Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that make a website feel expensive. Blocks all the common defaults that make AI designs look cheap or generic.",
-    "category": "general",
-    "source": "vault"
-  },
-  "stitch-design-taste": {
-    "name": "stitch-design-taste",
-    "folder": "stitch-skill",
-    "description": "Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-generic UI standards — strict typography, calibrated color, asymmetric layouts, perpetual micro-motion, and hardware-accelerated performance.",
-    "category": "design-frontend",
-    "source": "vault"
-  },
-  "design-taste-frontend": {
-    "name": "design-taste-frontend",
-    "folder": "taste-skill",
-    "description": "Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict pre-flight check.",
-    "category": "design-frontend",
-    "source": "vault"
-  },
-  "design-taste-frontend-v1": {
-    "name": "design-taste-frontend-v1",
-    "folder": "taste-skill-v1",
-    "description": "The original v1 taste-skill, preserved for projects depending on its exact behavior. The current default is `design-taste-frontend` (v2 experimental), which is a substantial rewrite. Use this v1 install name only if you need exact backward compatibility.",
-    "category": "design-frontend",
-    "source": "vault"
-  },
-  "vercel-cli-with-tokens": {
-    "name": "vercel-cli-with-tokens",
-    "folder": "vercel-cli-with-tokens",
-    "description": "Deploy and manage projects on Vercel using token-based authentication. Use when working with Vercel CLI using access tokens rather than interactive login — e.g. \"deploy to vercel\", \"set up vercel\", \"add environment variables to vercel\".",
-    "category": "web-frontend",
-    "source": "vault"
-  },
-  "vercel-optimize": {
-    "name": "vercel-optimize",
-    "folder": "vercel-optimize",
-    "description": "Use for Vercel cost and performance optimization on deployed projects, especially Next.js, SvelteKit, Nuxt, and limited Astro apps. Collect Vercel metrics, usage, project config, and code scan results first; investigate only metric-backed candidates; produce ranked recommendations grounded in verified files and version-aware Vercel/framework docs. Trigger for Vercel bill reduction, slow or expensive routes, caching opportunities, Function Invocations, Build Minutes, Fast Data Transfer, Core Web Vitals, Bot Management, Fluid compute, or cost breakdown requests.",
-    "category": "web-frontend",
-    "source": "vault"
-  },
-  "writing-guidelines": {
-    "name": "writing-guidelines",
-    "folder": "writing-guidelines",
-    "description": "Review docs/prose for Writing Guidelines compliance. Use when asked to \"review my docs\", \"check writing style\", \"audit prose\", \"review docs voice and tone\", or \"check this page against the writing handbook\".",
-    "category": "general",
-    "source": "vault"
-  },
-  "unity-6-mobile-master": {
-    "name": "unity-6-mobile-master",
-    "folder": "unity-6-mobile-master",
-    "description": "Elite Unity 6 LTS mobile game development skill. Covers URP 2D, zero-GC architecture, frame pacing/Swappy, Android 16 (API 36) compliance, and memory-safe pooling.",
-    "category": "gamedev",
-    "source": "chroma-cat-studios"
-  },
-  "game-feel-and-juiciness": {
-    "name": "game-feel-and-juiciness",
-    "folder": "game-feel-and-juiciness",
-    "description": "Formulas, curves, physics, and tactile interaction design for game feel and juiciness. Covers procedural squash & stretch, trauma-based camera shake, and hitstop.",
-    "category": "gamedev",
-    "source": "chroma-cat-studios"
-  },
-  "proxmox-pve-architect": {
-    "name": "proxmox-pve-architect",
-    "folder": "proxmox-pve-architect",
-    "description": "Proxmox VE 8/9, ZFS mirror storage, LXC container orchestration, Netbird mesh networking, GLPI/ITAM automation, and GPU passthrough diagnostics for srv-conectica.",
-    "category": "devops",
-    "source": "conectica-it"
-  },
-  "android-qa-playtesting": {
-    "name": "android-qa-playtesting",
-    "folder": "android-qa-playtesting",
-    "description": "Systematic QA, playtesting, and debugging workflow for Android games. Covers ADB commands, logcat crash dumps, memory leak profiling, and aspect ratio validation.",
-    "category": "gamedev",
-    "source": "chroma-cat-studios"
-  },
-  "claw_router": {
-    "name": "claw_router",
-    "folder": "claw_router",
-    "description": "Smart LLM routing integration guidelines across OpenAI, Anthropic, Google, and DeepSeek via OpenClaw.",
-    "category": "ai-router",
-    "source": "jarvis-core"
-  },
-  "image_gen": {
-    "name": "image_gen",
-    "folder": "image_gen",
-    "description": "Generate images via BlockRun image API or native generate_image tool for assets, UI and artwork.",
-    "category": "ai-generation",
-    "source": "jarvis-core"
-  },
-  "graphify": {
-    "name": "graphify",
-    "folder": "graphify",
-    "description": "Knowledge graph builder and query engine for codebases, god nodes, dependencies, and architecture.",
-    "category": "code-analysis",
-    "source": "jarvis-core"
-  },
-  "antislop": {
-    "name": "antislop",
-    "folder": "antislop",
-    "description": "Anti Slop: Rules for AI Coding Agents. The core filter with 38 rules (R-01 to R-38), Liveliness Toolkit (Energy, Rhythm, Motion dials), and Delivery Gate.",
-    "category": "design",
-    "source": "anti-slop (MIT)"
-  },
-  "antislop-ui": {
-    "name": "antislop-ui",
-    "folder": "antislop-ui",
-    "description": "UI and visual skill for antislop: color palettes, layouts, anti-bento, anti-glassmorphism overuse, elevation shadows, and purposeful motion.",
-    "category": "design",
-    "source": "anti-slop (MIT)"
-  },
-  "antislop-copywriting": {
-    "name": "antislop-copywriting",
-    "folder": "antislop-copywriting",
-    "description": "Copy and text skill for antislop: headlines, tone, CTAs, anti-AI-writing patterns, fake statistics purge, and honest product claims.",
-    "category": "design",
-    "source": "anti-slop (MIT)"
-  },
-  "antislop-human": {
-    "name": "antislop-human",
-    "folder": "antislop-human",
-    "description": "Human accessibility skill for antislop: WCAG 2.x contrast verification (with python checker), keyboard navigation, focus rings, and state completeness.",
-    "category": "design",
-    "source": "anti-slop (MIT)"
-  },
-  "antislop-layoutmobile": {
-    "name": "antislop-layoutmobile",
-    "folder": "antislop-layoutmobile",
-    "description": "Mobile layout skill for antislop: fluid reflow across screen sizes (phone to desktop), breakpoints, touch targets (44px), and avoiding rigid 2-state layouts.",
-    "category": "design",
-    "source": "anti-slop (MIT)"
-  },
-  "antislop-code": {
-    "name": "antislop-code",
-    "folder": "antislop-code",
-    "description": "Code comment hygiene for antislop: purge generic AI-slop comments and decorative banners while preserving architectural intent and critical rationale.",
-    "category": "development",
-    "source": "anti-slop (MIT)"
-  },
-  "self-improving-agent": {
-    "name": "self-improving-agent",
-    "folder": "self-improving-agent",
-    "description": "Continuous learning engine that captures corrections, user preferences, and runtime lessons into living memory.",
-    "category": "core"
-  },
-  "agent-genesis": {
-    "name": "agent-genesis",
-    "folder": "agent-genesis",
-    "description": "Master onboarding wizard for bootstrapping tailored AI agents with identity, rules, memory, and skills.",
-    "category": "core"
-  },
-  "senior-frontend": {
-    "name": "senior-frontend",
-    "folder": "senior-frontend",
-    "description": "Advanced architectural guidance and modern best practices for React, Next.js, Astro, TypeScript, state management, and web performance optimization.",
-    "category": "frontend"
-  },
-  "game-design-studio": {
-    "name": "game-design-studio",
-    "folder": "game-design-studio",
-    "description": "Professional game design documentation, vertical slice scoping, art/sound bibles, game loops, economy models, and Unity 6 LTS best practices. Uses standardized AAA templates from tools/game_design_templates and tools/unity_6_reference.",
-    "category": "gamedev",
-    "source": "Claude-Code-Game-Studios"
   }
 }

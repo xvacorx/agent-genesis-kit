@@ -79,6 +79,7 @@ PROFILES = {
             "design-md-catalog",
             "image-to-code-skill",
             "web-design-guidelines",
+            "modern-web-guidance",
             "code-review",
             "self-improving-agent",
             "graphify",
@@ -121,6 +122,7 @@ BUNDLES = {
         "description": "Elite anti-slop frontend suite, guidelines, and design systems",
         "skills": [
             "web-design-guidelines",
+            "modern-web-guidance",
             "image-to-code-skill",
             "taste-skill",
             "react-best-practices",
@@ -151,6 +153,16 @@ BUNDLES = {
             "api-security-best-practices",
             "backend-security-coder",
             "linux-privilege-escalation",
+        ]
+    },
+    "ponytail-lean": {
+        "description": "YAGNI, minimal-diff coding, stdlib-first & over-engineering audit skills",
+        "skills": [
+            "ponytail",
+            "ponytail-review",
+            "ponytail-audit",
+            "ponytail-debt",
+            "ponytail-help",
         ]
     }
 }
